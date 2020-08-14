@@ -1,0 +1,50 @@
+% Page layout
+\textwidth       140.0mm
+\textheight      217.0mm
+\oddsidemargin    9.9mm
+\evensidemargin   9.9mm
+\topmargin        15.0mm
+\headheight        0.0mm
+\headsep           0.0mm
+\footskip          8.0mm
+\parindent 1zw\relax
+
+% cover
+\makeatletter
+
+\def\@thesis{卒 業 論 文}
+\def\id#1{\def\@id{#1}}
+\def\department#1{\def\@department{#1}}
+\def\advisor#1{\def\@advisor{#1}}
+
+
+\def\@maketitle{
+\begin{center}
+\vspace*{20mm}
+{\huge \@thesis \par} %修士論文と記載される部分
+\vspace{30mm}
+{\LARGE\bf \@title \par}% 論文のタイトル部分
+\vspace{30mm}
+{\Large \@department \par} % 所属部分
+\vspace{2mm}
+{\Large 学籍番号 \@id \par} % 学籍番号部分
+\vspace{10mm}
+{\Large \@author \par}% 氏名
+\vspace{10mm}
+{\Large \@date\par \par} % 提出年月日部分
+\vspace{8mm}
+{\Large 指導教員\hspace*{0.5cm} \@advisor} % 指導教員
+\end{center}
+\par\vskip 1.5em
+}
+
+\makeatother
+
+% Affiliation
+\long\def\@makefntext#1{%
+  \everypar={\hangindent=1zw \hangafter=1 \@nobreakfalse\@minipagefalse}%
+  \parindent 1zw\noindent%
+  \hbox to 0.5zw{\hss$^{\@thefnmark}$} \strut #1\strut
+}
+
+% end of file
