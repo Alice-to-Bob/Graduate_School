@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  19 AUG 2020 21:48
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  27 AUG 2020 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -153,65 +153,90 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 54.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 11.53198pt on input line 54.
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
+File: graphs/telework_list.pdf Graphic file (type pdf)
+<graphs/telework_list.pdf>
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 88.
+(Font)              scaled to size 8.64899pt on input line 93.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 88.
- [2
+(Font)              scaled to size 8.64899pt on input line 93.
 
-] [3]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2
+
+]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 134.
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3]
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+ [4] [5]
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 192.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 134.
- [4]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 192.
+ [6]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
- [5]
+ [7]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] [7]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
- [8] [9] Excluding 'comment' comment. Excluding 'comment' comment. [10]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8] [9]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
- [11] [12]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 463.
+ [10] [11] Excluding 'comment' comment. Excluding 'comment' comment. [12]
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+ [13] [14]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 521.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 463.
- [13] [14] [15] [16] [17] [18] Excluding 'comment' comment. [19] [20] Excluding 'comment' comment. [21] (./subthemeReport.bbl [22]) [23] (./subthemeReport.aux)
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 521.
+ [15] [16] [17]
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+[18] [19] [20] [21] Excluding 'comment' comment. [22] [23] Excluding 'comment' comment. [24] (./subthemeReport.bbl [25]) [26] (./subthemeReport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1040 strings out of 493226
- 13823 string characters out of 6144095
+ 1057 strings out of 493226
+ 14351 string characters out of 6144095
  81852 words of memory out of 5000000
- 5028 multiletter control sequences out of 15000+600000
+ 5040 multiletter control sequences out of 15000+600000
  14867 words of font info for 67 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 25i,7n,21p,268b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,7n,21p,268b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on subthemeReport.dvi (25 pages, 61860 bytes).
+Output written on subthemeReport.dvi (28 pages, 65492 bytes).
