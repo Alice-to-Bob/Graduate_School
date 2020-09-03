@@ -1,6 +1,6 @@
 % !TeX root = ./subthemeReport.tex
 
-\documentclass[12pt,a4paper,titlepage]{jreport}
+\documentclass[12pt,a4paper,titlepage]{jsarticle}
 \usepackage{indentfirst}
 \usepackage[dvipdfmx,hiresbb]{graphicx}
 \usepackage{comment}
@@ -49,9 +49,9 @@
 
 \tableofcontents
 \clearpage
-\chapter{はじめに}
+\section{はじめに}
 
-\section{研究背景}
+\subsection{研究背景}
 クラウドサーバーサービスの普及により、一般ユーザーが遠隔サーバーにアクセスし、その資源を利用する機会が増えてきた。
 Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)、Microsoftのクラウドサービス(Azure)などのように
 ユーザーの目的に合わせて、遠隔サーバーの利用を容易にするアプリケーションが多く存在する。
@@ -77,7 +77,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 %また、アプリケーションの適応先で小規模、大規模専用のものと分類し、その中で使われている技術についても解説を行う。
 %\\\\
 
-\section{研究目的}
+\subsection{研究目的}
 %本研究では、図１のような隔離ネットワークを構成し、そこにソースコード投稿サイトに公開されている通信制御アプリケーションを試用し、
 %その中で小規模と大規模アプリケーションいうように分類し検討を行う。
 
@@ -127,10 +127,10 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 
 
 
-\chapter{遠隔アクセス技術}
+\section{遠隔アクセス技術}
 本節では遠隔サーバーに接続し操作するための技術やソフトウェアの解説を行う。
 
-\section{暗号化技術}
+\subsection{暗号化技術}
 暗号化技術は、情報の保護やコンピュータセキュリティに欠かせない技術である。
 通信内容の保護のために、一般的に次に示す二種類の暗号化技術を使用して、認証及び暗号化通信を行っている。
 \begin{itemize}
@@ -140,7 +140,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 それぞれの暗号方式は様々なアルゴリズムによって実現されるが、元となる「平文」データを「鍵」を使って「暗号文」に変換している。
 また、「暗号文」は「鍵」を使用して、「平文」に復号できる。
 
-\subsection{共通鍵暗号方式}
+\subsubsection{共通鍵暗号方式}
 AとBで共通の鍵を使用して、暗号化と復号化を行う。
 そのため、暗号化通信をする前にこの共通鍵を事前に秘密に共有する必要がある。
 共通鍵暗号方式の暗号化を下図\ref{shared_key}に示す。
@@ -157,7 +157,7 @@ AとBで共通の鍵を使用して、暗号化と復号化を行う。
 \end{figure}
 
 代表的な暗号化アルゴリズムに「AES」が存在する。
-\subsection{公開鍵暗号方式}
+\subsubsection{公開鍵暗号方式}
 公開鍵暗号方式は、二種類の鍵である公開鍵と秘密鍵をペアで使用する。この公開鍵と秘密鍵には次に示す性質があり、公開鍵暗号方式はこれら
 の性質を利用して暗号化や署名を実現している。
 \begin{itemize}
@@ -180,10 +180,10 @@ AとBで共通の鍵を使用して、暗号化と復号化を行う。
 
 代表的な暗号化アルゴリズムに「RSA暗号」「Diffi-Hellman鍵共有」等がある。
 
-\section{トンネリング(Tunneling)}
+\subsection{トンネリング(Tunneling)}
 ここでは、トンネリングの仕組みと\ref{aboutVPN}節に関係するVPNトンネリングプロトコルの説明も行う。
 
-\subsection*{トンネリングとは}
+\subsubsection*{トンネリングとは}
 
 トンネリングとは、「パケットやフレームを他のパケットやフレームの中にカプセル化すること」である。
 これにより、プライベートアドレスの隠蔽や、カプセル化後に暗号化をすることでデータの保護を行うことができる。
@@ -205,7 +205,7 @@ AとBで共通の鍵を使用して、暗号化と復号化を行う。
 
 
 
-\section{Telnet}
+\subsection{Telnet}
 Telnetは、ネットワークに接続された機器を遠隔操作するために使用するアプリケーション層の技術である。
 サーバ・クライアント方式で提供され、Telnetサーバが操作される側、クライアントが操作する側で動作する。
 Telnetを使うことでオフィスのデスクにいながら、マシンルームにあるサーバ、ルータ等の機器をパソコン上で操作できる。
@@ -213,7 +213,7 @@ PCにはtelnetクライアント、ルータなどの機器にはtelnetサーバ
 基本的にはポート番号23を使用する。
 
 
-\subsection{Telnetの仕組み、使用法}
+\subsubsection{Telnetの仕組み、使用法}
 Telnetの接続までの流れは以下の図\ref{telnet_flow}のようになっている。
 PCからのTelnetはコマンドプロンプトやTerminalから、「telnet 150.65.136.94」というようにtelnetコマンドと接続したいサーバのIPアドレス
 を入力するか、WindowsではTera Term等でIPアドレスと入力してTelnet接続を行う。
@@ -230,7 +230,7 @@ Telnetで遠隔操作を行うためには対象の機器にログインする�
 問題点として、認証も含めすべての通信を暗号化せずに平文のまま送信するため、パスワードを盗むのは比較的容易である。
 同様の機能を持ち、情報を暗号して送信することができるSSHが存在し、セキュリティの観点からTelnetよりもSSHが推奨されている。
 
-\section{SSH}
+\subsection{SSH}
 上記のTelnet は、遠隔操作するサーバーの認証情報を含め、通信を暗号化せずに平文のまま通信を行う。その結果、通信内容を盗聴されると
 認証情報や通信内容が簡単に盗まれてしまう危険性がある。
 この問題を解決してくれるのが、Telnetと同様な機能を持ちかつ通信内容を暗号化してくれる「SSH」（Secure SHell)である。
@@ -260,7 +260,7 @@ SSHの技術を用いるために、「OpenSSH」というソフトウェアが�
 どうかで認証する。クライアント側が持つ秘密鍵はネットワーク上に送信されることはなく、サーバ側が持つ公開鍵から秘密鍵を推測されないため、
 パスワード認証よりも安全な認証を行える。
 SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイルに登録される。
-\subsection{SSHの機能}
+\subsubsection{SSHの機能}
 
 
 
@@ -280,7 +280,7 @@ SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイル�
 %公開鍵認証を使用することで、パスワードが漏洩し、他者に利用されることを防ぐ。
 
 
-\subsection{SSH接続までの流れ}
+\subsubsection{SSH接続までの流れ}
 
 まず初めに暗号化通信路の確立までの流れを以下図\ref{SSH_flow}のように示す。
 \begin{figure}[h]
@@ -331,9 +331,9 @@ SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイル�
 
 
 
-\section{VPN}\label{aboutVPN}
+\subsection{VPN}\label{aboutVPN}
 
-\subsection*{VPNとは}
+\subsubsection*{VPNとは}
 VPNとは、「Virtual Private Network」の略であり、「仮想専用線」や「仮想閉域網」と訳され、通信事業者のネットワークやインターネットなどの公衆ネットワーク上で作られる、仮想的な専用ネットワークの
 総称である。
 
@@ -349,9 +349,9 @@ VPNは大きく以下の３つの技術を用いて安全な通信を実現す�
     \item 暗号化
     \item 認証
 \end{itemize}
-\subsection*{IPSec-VPN}
+\subsubsection*{IPSec-VPN}
 
-\subsection*{IPSec}
+\subsubsection*{IPSec}
 
 
 
@@ -371,12 +371,12 @@ VPNは大きく以下の３つの技術を用いて安全な通信を実現す�
 
 \begin{comment}
     VPNは「インターネットVPN」と「IP-VPN」の大きく２種類のサービスに分類できる。
-    \subsection*{IP-VPN}
+    \subsubsection*{IP-VPN}
     拠点間の接続に、プロバイダなどの通信事業者の閉域ネットワーク網を使った通信技術のことで、通信業者と契約した人のみ利用できる閉ざされた
     ネットワークのことである。
     IP-VPNは閉域網を利用するため、トラフィック混雑時も一定の帯域が保障さら盗聴や改ざんのリスクが低いなど、コストよりも安定性や信頼性を
     重視している。
-    \subsection*{インターネットVPN}
+    \subsubsection*{インターネットVPN}
     インターネットVPNとは、インターネット回線を利用したVPNのことである。\\
     インターネットVPNの中にも大きく２種類あり、「IPsec-VPN」「SSL-VPN」がある。
 \end{comment}
@@ -446,18 +446,18 @@ VPN接続はトンネリングと暗号化によって実現している。ト�
 \end{comment}
 
 
-\subsection{VPNの仕組み、使用法}
+\subsubsection{VPNの仕組み、使用法}
 
 
-\chapter{認証技術}
+\section{認証技術}
 大規模のアプリケーションを実現するために、使われている認証技術の解説を行う。
-\section{LDAP}
-\subsection*{概要}
+\subsection{LDAP}
+\subsubsection*{概要}
 LDAP(Lightweight Directory Access Protocol)は、Active Directoryのようなディレクトリサービスにアクセスするためのプロトコルである。
 %ディレクトリサービスというユーザやコンピュータといった情報を管理するサービス
 LDAP自体はプロトコルであり、サービスやシステムを指すものではない。
 LDAPを実装したデータベースをLDAPサーバと呼び、代表的なものに「Open LDAP」、「Active Directory」が存在する。\par
-\subsection*{ディレクトリサービス}
+\subsubsection*{ディレクトリサービス}
 ディレクトリサービスとは、ディレクトリと呼ばれるデータベースから、ユーザ名やマシン名などのキーを元にデータを検索、参照するための
 サービスである。
 一般的にデータベースと呼ばれる、SQL言語等を用いて扱う「RDB (Relatinal Data Base)」では、データ間の関係性を利用して、
@@ -465,7 +465,7 @@ LDAPを実装したデータベースをLDAPサーバと呼び、代表的なも
 グローバルでサービスを提供する場合には、分散型ディレクトリサービスが用いられ、DNS(Domain Name Service)が分散型ディレクトリサービス
 として有名である。
 
-\subsection*{LDAP、ディレクトリサービスの特徴}
+\subsubsection*{LDAP、ディレクトリサービスの特徴}
 %LDAPとはデータ追加や削除よりも検索を重視したプロトコルであるため
 %、顧客、商品情報管理のように頻繁に更新されるデータを扱うのは能力は高くない。
 
@@ -485,7 +485,7 @@ LDAPの特性としては、「情報の参照、検索」に特化している�
 %持ちにユーザー
 %認証が可能になる。（SSO シングルサインオン）
 
-\subsection*{LDAPできること}
+\subsubsection*{LDAPできること}
 \begin{enumerate}
     \item リソースの一元管理\mbox{}\\多数のクライアントがある場合、１台１台にIDパスワード情報を入れることなく、LDAPサーバー１台
 だけ登録すれば、どのクライアントからも同じIDパスワードでログインできるようになり、さらに環境もログイン時に取得できるようになる。
@@ -496,24 +496,24 @@ LDAPの特性としては、「情報の参照、検索」に特化している�
 認証無しでログインできる仕組みである、シングルサインオン（SSO）を実現できる。
 \end{enumerate}
 
-\subsection*{LDAPの仕組み}
+\subsubsection*{LDAPの仕組み}
 -----------ここは図を使って説明できたら良い。
 
-\section{Kerberos}
+\subsection{Kerberos}
 ネットワーク内でのシステムの安全性と利便性は共存しにくいことがある。
 単純にどのサービスがネットワーク上で稼働しているか、そして、使用されているサービスの動作を管理者が追跡するだけでも膨大な時間がかかることがある。
 さらに、FTPプロトコルやTelnetプロトコルのようにデータを暗号化せずにネットワーク上でパスワードを送信させるというような、プロトコル自体が安全でないとき
 ネットワークサービスへのユーザ認証は危険を伴うことになる。
 
 
-\subsection*{Kerberosとは}
+\subsubsection*{Kerberosとは}
 ネットワーク上でユーザの認証を行う方式の一つである。クライアント/サーバ間の通信を暗号化でき、比較的セキュリティが強固な認証方式となっている。
 ケルベロス認証では一度ログインすると、
 「チケット」と呼ばれるものを用いて認証を行えるようになるため、
 次回のログイン時にID・パスワードを改めて入力する必要がなくなり、シングルサインオン（SSO）を実現できる。\par 
 利用例としては、Active Directory のユーザ認証の際に用いられている。名前はギリシャ神話の地獄の門を守る番犬ケルベロスに由来している。
 
-\subsection*{Kerberosの構成要素}
+\subsubsection*{Kerberosの構成要素}
 Kerberosの仕組みを解説する前に、用語「KDC、AS、TGS、プリンシパル、レルム」の説明を行う。
 \begin{itemize}
     \item KDC (Key Distribution Center)\mbox{}\\サーバとユーザに関する信頼関係の情報を一括管理する中央データベース。
@@ -531,7 +531,7 @@ Kerberosの仕組みを解説する前に、用語「KDC、AS、TGS、プリン�
         \label{KerberosCompornent}
     \end{center}
 \end{figure}\\
-\subsection*{Kerberosの認証の仕組み}
+\subsubsection*{Kerberosの認証の仕組み}
 Kerberos認証では、ユーザが正しいユーザIDとパスワードをAS(Authentication Server)に送信して認証に成功するとTGS(Ticket Granting server)から
 チケットと呼ばれるデータを受け取れる。Kerberos認証ではこのチケットを認証に使用する。サーバはアクセスしてくるユーザがアクセス権を持っている
 かどうかをユーザIDとパスワードではなくチケット（クライアントID、タイムスタンプ、有効期限が記されている）を使用して確認する。
@@ -551,9 +551,9 @@ Kerberos認証では、チケットの盗聴によるなりすましを防ぐた
 したがって、NTP（Network Time Protocol）を使用して、チケット発行側の時刻とチケット利用側の時刻が同じにする必要がある。
 
 
-\section{Radius}
+\subsection{Radius}
 
-\subsection*{Radiusとは}
+\subsubsection*{Radiusとは}
 Radius(Remote Authentication Dial In User Service)は、ネットワーク上のユーザ認証プロトコルである。
 無線LANや有線LANでのネットワーク接続時のユーザ認証のプロトコルとしても利用されている。
 
@@ -570,7 +570,7 @@ Radiusによる認証システムは、「Radiusサーバ」、「Radiusクラ�
 
 \end{itemize}
 
-\subsection*{Radius認証の流れ}
+\subsubsection*{Radius認証の流れ}
 全体の認証の流れは下図のようになっている。\\
 ----------------------ここに図を挿入ーーーーーーーーーーーーーーーー\\
 
@@ -582,8 +582,8 @@ PCからRadiusクライアントに送信されたユーザ名とパスワード
 
 
 
-\section{Active Directory}
-\subsection*{Active Directoryとは}
+\subsection{Active Directory}
+\subsubsection*{Active Directoryとは}
 マイクロソフトによって開発されたディレクトリサービスシステムで、一般的にWindowsOSで使用される。
 Active Directoryは複数のサービスの総称である。
 
@@ -593,7 +593,7 @@ Active Directoryとは簡単にいうと「Windowsシステムで認証を行う
 このようなシステムにアクセス可能かどうかを判断するために、Active Directoryの認証機能を使用してアクセスの制限を
 行う。
 
-\subsection*{Active Directoryの機能}
+\subsubsection*{Active Directoryの機能}
 
 Active Directoryは５つのサービスから構成されている。
 
@@ -622,7 +622,7 @@ Active Directoryは５つのサービスから構成されている。
 
 \if0
 
-\subsection*{Active Directoryの構成要素と概念}
+\subsubsection*{Active Directoryの構成要素と概念}
 
 \begin{itemize}
     \item ドメイン\mbox{}\\
@@ -641,7 +641,7 @@ Active Directoryは単一のサービスではなく、他のサービスを利�
 ユーザ認証に「Kerberos認証」、ディレクトリサービスに「LDAP」を使用している。
 
 
-\subsection*{Active Directory で実現できること}
+\subsubsection*{Active Directory で実現できること}
 Active Directoryのメリットとしては、システム管理者はドメインサーバに登録されているすべての
 パソコンを一括管理する事ができる。
 
@@ -652,7 +652,7 @@ Active Directoryのメリットとしては、システム管理者はドメイ�
 \fi
 
 
-\chapter{研究のためのネットワーク構成}
+\section{研究のためのネットワーク構成}
 本研究では、L2スイッチ一台とCentOSv8のインストールされたサーバ三台を用いて一台をGateway Server、残りの二台をHost Server
 とすることで、
 以下図\ref{network_graph}のような隔離ネットワークを構成し、そのネットワーク内でソフトウェアを試用する。
@@ -685,17 +685,17 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 \end{itemize}
 
 
-\chapter{小規模ソフトウェア}
+\section{小規模ソフトウェア}
 インストール先がゲートウェイサーバーだけのものや、隔離ネットワークにアクセスするクライアントだけの
 ものを小規模のアプリケーションと分類して、評価を行う。
 まず最初に、評価表を表ref に示す。
 
 
-\section{sshuttle}
-\subsection*{概要}
+\subsection{sshuttle}
+\subsubsection*{概要}
 ``sshuttle(https://github.com/sshuttle/sshuttle)"は、簡易VPNツールである。リモートアクセスユーザのみにインストールすれば
     使用できる。本論文では、図\ref{network_graph}のClientにインストールを行なった。
-\subsection*{インストール方法}
+\subsubsection*{インストール方法}
 今回、クライアントpcにはMacBookを用いたため、homebrewを使ってインストールを行なった。
 他のOSの場合のインストール方法もいくつかここに記す。
 \begin{itemize}
@@ -705,7 +705,7 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 \end{itemize}
 Clientのみにインストールすればよいため、とても容易に使用することができる。
 
-\subsection*{使用方法}
+\subsubsection*{使用方法}
 今回、図\ref{network_graph}でClientと隔離ネットワークとVPNを形成したい時を想定する。\\
 "\$ sshuttle -r pc15@15.65.136.94 10.1.1.0/24"のコマンドで、図\ref{sshuttle}のようにVPNを形成できた。
 実際のterminalの図はこちらになる。
@@ -725,7 +725,7 @@ Clientのみにインストールすればよいため、とても容易に使�
 
 
 
-\subsection*{メリット}
+\subsubsection*{メリット}
 sshuttleを使用するメリットは、「安全性」と「簡易化」である。\par
 一般的に、図\ref{network_graph}のような隔離ネットワーク内のホストにアクセスするためには、多段sshやTunnelingを行う必要がある。
 多段sshというのは今回の場合、ClientがまずGateway Serverにsshを行い、その後Gateway ServerのTerminalから、隔離ホストにssh接続するというように
@@ -739,9 +739,9 @@ Client-隔離ホスト間で鍵共有するだけでよいため、インター�
 %図のようなネットワーク構成図の場合、隔離ホストにアクセスするためには、クライアントからgateway serverにssh接続を行い、その後再び
 %隔離ホストへsshを行う、「多段ssh」や、gateway serverから隔離ホストへ「tunneling」を行う必要が発生する。
 
-\section{sshportal}
+\subsection{sshportal}
 
-\subsection*{概要}
+\subsubsection*{概要}
 ``sshportal(https://github.com/moul/sshportal)"とは、透過的なSSH要塞サーバーにするソフトウェアである。
 Gateway Serverのみにインストールすれば使用することができる。
 sshportalを使用することで、管理者はGateway Serverにアクセスし隔離ホストにログインできる、ユーザーを動的に管理することができる。
@@ -750,7 +750,7 @@ Gateway Sserver のみが両側に関する情報を知っているため、エ�
 すべてのものに自動的に接続される。
 
 
-\subsection*{インストール方法}
+\subsubsection*{インストール方法}
 sshportalはDockerを用いることで容易にインストールができる。
 また、今回使用したGateway ServerのOSはCentOSv8.0であるためDockerは使用できない。代わりに"Podman"が存在しているため、
 そのコマンドもここに記す。Podmanの使用法はほとんどDockerと違いはない。
@@ -760,9 +760,9 @@ sshportalはDockerを用いることで容易にインストールができる�
     \item Podman\mbox{}\\podman pull moul/sshportal
 \end{itemize}
 
-\subsection*{使用方法}
+\subsubsection*{使用方法}
 ここでは「Docker」使用時のコマンドを示す。
-\subsection*{管理者の場合}
+\subsubsection*{管理者の場合}
 \begin{itemize}
 
     \item バックグラウンドサーバーを開始する \mbox{}\\docker run -p 2222:2222 -d --name=sshportal -v "\$(pwd):\$(pwd)" -w "\$(pwd)" 
@@ -785,30 +785,30 @@ sshportalはDockerを用いることで容易にインストールができる�
 \end{itemize}
 
 
-\subsection*{ユーザーの場合}
+\subsubsection*{ユーザーの場合}
 
 
-\subsection*{評価}
+\subsubsection*{評価}
 sshportalはインストールと管理が簡単にできるように作成されており、新規ユーザーの追加を管理者が動的に行うことができる。
 また、インストール先はGateway Server のみで良いため、容易に使用することができる。
 \par デメリットとしては、ユーザーの管理を動的に管理者が行う必要があるため、ユーザーが大人数になるほど管理が大変になってしまう。
 
 
-\section{sshpiper}
+\subsection{sshpiper}
 
 
 
-%\section{FreeIPA}
+%\subsection{FreeIPA}
 
-\chapter{大規模ソフトウェア}
+\section{大規模ソフトウェア}
 インストール先がGateway Serverだけでなく、隔離ネットワーク内のホスト全てにRole別に設定を行う必要のあるものを
 大規模アプリケーションと分類して、評価を行う。
 まず最初に、評価表を下表に示す。
 
 
-\section{teleport}
+\subsection{teleport}
 
-\subsection*{概要}
+\subsubsection*{概要}
 Teleport(https://github.com/gravitational/teleport)は、リモートアクセスのためのセキュリティGatewayとなっている
 
 
@@ -832,7 +832,7 @@ SSHまたはKubernetes APIを介してlinuxサーバのクラスターへのア�
 
 
 
-\subsection*{Teleportの構成要素}
+\subsubsection*{Teleportの構成要素}
 Teleportの仕組みを解説する前に、用語の説明を行う。
 
 
@@ -872,7 +872,7 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
     
 \end{itemize}
 
-\subsection*{Teleportの接続までの流れ}
+\subsubsection*{Teleportの接続までの流れ}
 下図の詳細なアーキテクチャを使って説明を行う。
 
 \begin{enumerate}[1:]
@@ -912,7 +912,7 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
 \end{enumerate}
 
 
-\subsection*{使用方法}
+\subsubsection*{使用方法}
 
 
 
@@ -920,30 +920,30 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
 \begin{comment}
     
     
-    \section{Aker}
+    \subsection{Aker}
     
-    \subsection*{Akerとは}
+    \subsubsection*{Akerとは}
     Aker(https://github.com/aker-gateway/Aker)は、独自のLinux sshジャンプ/要塞ホストの構成に役立つセキュリティツールである。
     国境を守ったエジプト神話の上にちなんで名付けられている。
     
     すべてのシステム管理者とサポートスタッフがLinuプロダクションサーバーにアクセスするためのチョークポイントとして機能する。
     
-    \subsection*{特徴}
+    \subsubsection*{特徴}
     
 \end{comment}
 
 
 
-\section{SoftEther VPN}
+\subsection{SoftEther VPN}
 
-\subsection*{SoftEther VPNとは}
+\subsubsection*{SoftEther VPNとは}
 
 SoftEther VPN(https://ja.softether.org/)とは、筑波大学における学術目的の研究プロジェクト「SoftEther プロジェクト」により
 運営されている、オープンソースソフトウェアである。Windows,Linux,Mac,FreeBSDおよびSolaris上で動作する。
 
 
 
-\subsection*{SoftEther VPNの特徴}
+\subsubsection*{SoftEther VPNの特徴}
 SoftEther VPNは、カプセル化およびトンネリングの通信をレイヤ2、のデータリンク層で行なっている。
 
 SoftEther VPNを使用することで、通常のLANカード、スイッチングHUB及びレイヤ３スイッチなどの
@@ -953,7 +953,7 @@ SoftEther VPNを使用することで、通常のLANカード、スイッチン�
 
 柔軟なリモートアクセスVPN及び拠点間接続VPNを実現するために、Ehternetデバイスの仮想化する。
 
-\subsection*{SoftEther VPN Server の仕様}
+\subsubsection*{SoftEther VPN Server の仕様}
 
 同時接続可能な最大VPNセッション数
 4096個
@@ -979,12 +979,12 @@ Active Directory 認証
 
 
 
-\subsection*{SoftEther VPNの評価}
+\subsubsection*{SoftEther VPNの評価}
 
 
 
 
-\chapter{まとめ}
+\section{まとめ}
 
 
 \bibliography{link_subtheme}
