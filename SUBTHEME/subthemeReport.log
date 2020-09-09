@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  3 SEP 2020 17:14
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  9 SEP 2020 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -164,10 +164,10 @@ File: graphs/network_archtecture.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] [8]
+[7] [8] [9] [10] [11]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
- [9]
+ [12]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
 
@@ -179,65 +179,68 @@ File: graphs/network_archtecture.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10]
+[13]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
- [11] [12] [13] Excluding 'comment' comment. Excluding 'comment' comment. [14]
+ [14] [15] [16] [17]
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+ [18] [19]
 第 3 章
-[15
+[20
 
-] [16] [17]
+] [21] [22]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
 
-Overfull \hbox (43.16638pt too wide) in paragraph at lines 535--552
+Overfull \hbox (43.16638pt too wide) in paragraph at lines 568--585
 []\OT1/cmr/m/n/12 Kerberos \JY1/mc/m/n/12 認証では 、 ユ ーザが正しいユ ーザ \OT1/cmr/m/n/12 ID \JY1/mc/m/n/12 とパスワ ードを \OT1/cmr/m/n/12 AS(Authentication
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18] [19] [20] [21]
+[23] [24] [25] [26]
 第 4 章
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
-[22
+[27
 
-] [23]
+] [28]
 第 5 章
-[24
+[29
 
 ]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
- [25]
-Overfull \hbox (1.68246pt too wide) in paragraph at lines 745--751
+ [30]
+Overfull \hbox (1.68246pt too wide) in paragraph at lines 776--782
 []\OT1/cmr/m/n/12 ``sshportal(https://github.com/moul/sshportal)"\JY1/mc/m/n/12 とは 、 透過的な \OT1/cmr/m/n/12 SSH \JY1/mc/m/n/12 要
  []
 
-[26]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 771.
+[31]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 802.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 771.
- [27] [28]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 802.
+ [32] [33]
 第 6 章
-Excluding 'comment' comment. [29
+Excluding 'comment' comment. [34
 
-] [30]
-Overfull \hbox (41.1908pt too wide) in paragraph at lines 889--892
+] [35]
+Overfull \hbox (41.1908pt too wide) in paragraph at lines 920--923
 []\JY1/mc/m/n/12 ー ー ー ー ー ー ー ー ー ー ー ー ー ー ーここで図を挿入しておきたい ー ー ー ー ー ー ー ー
  []
 
-[31] Excluding 'comment' comment. [32] [33]
+[36] Excluding 'comment' comment. [37] [38]
 第 7 章
-(./subthemeReport.bbl [34
+(./subthemeReport.bbl [39
 
-]) [35
+]) [40
 
 ] (./subthemeReport.aux)
 
@@ -245,12 +248,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 930 strings out of 493226
- 13088 string characters out of 6144095
+ 939 strings out of 493226
+ 13243 string characters out of 6144095
  80186 words of memory out of 5000000
- 4919 multiletter control sequences out of 15000+600000
+ 4927 multiletter control sequences out of 15000+600000
  17074 words of font info for 66 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  25i,7n,21p,268b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on subthemeReport.dvi (37 pages, 74580 bytes).
+Output written on subthemeReport.dvi (42 pages, 89420 bytes).

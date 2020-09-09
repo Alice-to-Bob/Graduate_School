@@ -3,38 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: subthemeReport.aux
 The style file: junsrt.bst
 Database file #1: link_subtheme.bib
+Database file #2: rfc.bib
 Warning--empty author in covid_nikkei
 Warning--empty title in covid_nikkei
-You've used 2 entries,
+Warning--empty journal in RFC2402
+Warning--empty journal in RFC2406
+Warning--empty journal in RFC2409
+Warning--empty journal in RFC2637
+Warning--empty journal in RFC2661
+You've used 7 entries,
             2270 wiz_defined-function locations,
-            546 strings with 4229 characters,
-and the built_in function-call counts, 335 in all, are:
-= -- 17
-> -- 5
+            568 strings with 4741 characters,
+and the built_in function-call counts, 1433 in all, are:
+= -- 77
+> -- 64
 < -- 0
-+ -- 3
-- -- 1
-* -- 10
-:= -- 41
-add.period$ -- 4
-call.type$ -- 2
-change.case$ -- 1
++ -- 26
+- -- 19
+* -- 61
+:= -- 200
+add.period$ -- 19
+call.type$ -- 7
+change.case$ -- 6
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 25
-empty$ -- 45
-format.name$ -- 2
-if$ -- 78
+cite$ -- 14
+duplicate$ -- 90
+empty$ -- 145
+format.name$ -- 38
+if$ -- 327
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 1
-newline$ -- 11
-num.names$ -- 1
-pop$ -- 21
+int.to.str$ -- 7
+missing$ -- 6
+newline$ -- 36
+num.names$ -- 6
+pop$ -- 61
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 21
+skip$ -- 71
 stack$ -- 0
 substring$ -- 0
 swap$ -- 1
@@ -42,9 +48,9 @@ text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 1
-width$ -- 3
-write$ -- 18
-is.kanji.str$ -- 14
-(There were 2 warnings)
+warning$ -- 7
+while$ -- 6
+width$ -- 8
+write$ -- 63
+is.kanji.str$ -- 67
+(There were 7 warnings)

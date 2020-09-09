@@ -8,4 +8,29 @@
 総務省.
 \newblock 総務省テレワークセキュリティガイドライン, 平成30年4月.
 
+\bibitem{RFC2402}
+S.~Kent and R.~Atkinson.
+\newblock {IP Authentication Header, RFC2402}.
+\newblock November 1998.
+
+\bibitem{RFC2406}
+S.~Kent and R.~Atkinson.
+\newblock {IP Encapsulating Security Payload (ESP), RFC2406}.
+\newblock November 1998.
+
+\bibitem{RFC2409}
+D.~Harkins and D.~Carrel.
+\newblock {The Internet Key Exchange (IKE), RFC2409}.
+\newblock November 1998.
+
+\bibitem{RFC2637}
+K.~Hamzeh, G.~Pall, W.~Verthein, J.~Taarud, W.~Little, and G.~Zorn.
+\newblock {Point-to-Point Tunneling Protocol (PPTP), RFC2637}.
+\newblock July 1999.
+
+\bibitem{RFC2661}
+W.~Townsley, A.~Valencia, A.~Rubens, G.~Pall, G.~Zorn, and B.~Palter.
+\newblock {Layer Two Tunneling Protocol "L2TP", RFC2661}.
+\newblock August 1999.
+
 \end{thebibliography}
