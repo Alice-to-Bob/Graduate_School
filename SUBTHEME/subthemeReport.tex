@@ -1,6 +1,6 @@
 % !TeX root = ./subthemeReport.tex
 
-\documentclass[11pt,a4paper,titlepage]{jreport}
+\documentclass[11pt,a4j,titlepage]{jreport}
 \usepackage{indentfirst}
 \usepackage[dvipdfmx,hiresbb]{graphicx}
 \usepackage{comment}
@@ -766,11 +766,11 @@ Active Directoryのメリットとしては、システム管理者はドメイ�
 
 
 \chapter{研究のためのネットワーク構成}
-本研究では、L2スイッチ一台とCentOS8.0のインストールされたサーバ三台を用いて一台をGateway Server、残りの二台をHost Server
-とすることで、
+本研究では、L2スイッチ1台とCentOS8.0のインストールされたサーバ3台を用いて一台をGateway Server、残りの
+2台をHost Serverとすることで、
 以下図\ref{network_graph}のような隔離ネットワークを構成し、そのネットワーク内でソフトウェアを試用する。
 ここで隔離ネットワークとは、
-内部のHost Server二台はGatewayServerを経由しないと外部からは接続できないようになっているネットワークと定義する。
+内部のHost Server2台はGatewayServerを経由しないと外部からは接続できないようになっているネットワークと定義する。
 L2スイッチの設定は、
 PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが通るようにし、PC7とPC8間は"ping"コマンドが通らないように設定した。
 
@@ -781,11 +781,52 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
     \label{network_graph}
 \end{figure}
 
+\subsubsection{使用機器の説明}
+ここでは、HostServer、GatewayServerとL2スイッチの使用機器の説明を行う。\par
+まず、HostServer2台とGatewayServer1台はそれぞれ同じ機器であり、計３台を使用している。
+１台の詳細を下表\ref{server_detail}に記す。
+
+\begin{table}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=6]{graphs/telework_list.pdf}
+    \caption{サーバーの詳細}
+    \label{server_detail}
+\end{table}
+
+
+\if0
+\begin{itemize}
+    \item HostServerとGatewayServer\mbox{}
+    \begin{itemize}
+        \item (メーカー)\mbox{}\\Supermicro
+        \item （モデル）\mbox{}\\SYS-5018D-FN4T
+        \item (CPU)\mbox{} \\
+        %\begin{itemize}
+            %\item (model name)
+            Intel(R) Xeon(R) CPU D-1541 @ 2.10GHz
+            %\item (cpu MHz)2594.895
+        %\end{itemize}
+    \end{itemize}
+    
+\end{itemize}
+\fi
+そして、次にL2スイッチのスペックの詳細を下表にまとめる。
+
+
+\begin{table}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=7]{graphs/telework_list.pdf}
+    \caption{L2スイッチの詳細}
+    \label{switch_detail}
+\end{table}
+
 
 %そして、今回導入の規模に合わせて、小規模と大規模に分類し表に表す。
-
+\subsubsection{本研究でのアプリケーション規模の定義}
 そして、本研究では、試用するソフトウェアを導入規模で小規模と大規模というように分類し、各種機能で細分化して
 評価をしていくが、ここで小規模アプリケーションと、大規模アプリケーションを以下のように定義する。
+
+
 \begin{itemize}
     \item 小規模アプリケーション\mbox{}\\
     上図\ref{network_graph}において、「GatewayServer」だけにインストールするもの、「Client」だけにインストールするもの
@@ -831,7 +872,6 @@ Clientのみにインストールすればよいため、とても容易に使�
 \subsection*{使用方法}
 今回、図\ref{network_graph}でClientと隔離ネットワークとVPNを形成したい時を想定する。\\
 "\$ sshuttle -r pc15@15.65.136.94 10.1.1.0/24"のコマンドで、図\ref{sshuttleのVPN構築イメージ図}のようにVPNを形成できた。
-実際のterminalの図はこちらになる。
 一度VPNを形成すると、多段sshをする必要などなく、自由に隔離ホストにアクセスできるようになる。\par
 例えば、一度sshuttleでVPNを構築すると、Clientの端末上で\\ \mbox{\$ ssh pc8@10.1.1.8}のコマンドで
 隔離サーバであるPC8に直接ssh接続することができる。
@@ -844,26 +884,11 @@ Clientのみにインストールすればよいため、とても容易に使�
     \label{sshuttleのVPN構築イメージ図}
 \end{figure}
 
-実際のterminalの画面出力を以下図\ref{sshuttle_console}に示す。
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.0\textwidth, page=1]{graphs/sshuttle_console_first.png}
-    \caption{sshuttleのVPN構築時のコンソール画面}
-    \label{sshuttle_console}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.0\textwidth, page=1]{graphs/sshuttle_ssh.png}
-    \caption{sshuttle後隔離ホストへのssh接続画面}
-    \label{sshuttle_ssh}
-\end{figure}
 
 \subsection*{メリット}
-sshuttleを使用するメリットは、「安全性」と「簡易化」である。\par
+sshuttleを使用するメリットは、「安全性」と「簡易化」が可能になることである。\par
 一般的に、図\ref{network_graph}のような隔離ネットワーク内のホストにアクセスするためには、多段sshやTunnelingを行う必要がある。
-多段sshというのは今回の場合、ClientがまずGateway Serverにsshを行い、その後Gateway ServerのTerminalから、隔離ホストにssh接続するというように
+多段sshというのは今回の場合、ClientがまずGateway Serverにsshを行い、その後Gateway Serverのコマンドラインから、隔離ホストにssh接続するというように
 複数回sshを行うことである。この場合、一度sshを切ってしまうと、再び多段sshする必要である上に、各プロセスごとに多段sshをする必要がある。
 しかし、sshuttleを使用することで、一度VPNを構築すると自由に隔離ホストにアクセスすることができるため、
 とても容易に隔離ホストに接続できる。\par
@@ -898,14 +923,14 @@ sshportalはDockerを用いることで容易にインストールができる�
 \end{itemize}
 
 \subsection*{使用方法}
-ここでは「Docker」使用時のコマンドを示す。
-\subsection*{管理者の場合}
+ここでは「podman」使用時のコマンドを示す。
+\subsubsection*{管理者の場合}
 \begin{itemize}
     \setlength{\parskip}{0.1cm} % 段落間
     \setlength{\itemsep}{0.1cm} 
-    \item バックグラウンドサーバーを開始する \mbox{}\\docker run -p 2222:2222 -d --name=sshportal -v "\$(pwd):\$(pwd)" -w "\$(pwd)" 
+    \item バックグラウンドサーバーを開始する \mbox{}\\podman run -p 2222:2222 -d --name=sshportal -v "\$(pwd):\$(pwd)" -w "\$(pwd)" 
     moul/sshportal:v1.10.0
-    \item ログを表示させる\mbox{}\\docker logs -f sshportal
+    \item ログを表示させる\mbox{}\\podman logs -f sshportal
     \item 管理者(admin)としてログイン\mbox{}\\ \# ssh localhost -p 2222 -l admin\\その後 config \textgreater に切り替わる。ここで動的にユーザー登録を行う。
     
 \end{itemize}
@@ -915,7 +940,7 @@ sshportalはDockerを用いることで容易にインストールができる�
     \setlength{\itemsep}{0.1cm} 
     \item 最初にadminホストを作成する\mbox{}\\ config\textgreater  host create user1@10.1.1.8
     \item サーバーに鍵を追加する\mbox{} \\ \$ ssh user1@10.1.1.8 "\$(ssh localhost -p 2222 -l admin key setup default)"
-  
+
 \end{itemize}
 ユーザの招待
 \begin{itemize}
@@ -925,7 +950,7 @@ sshportalはDockerを用いることで容易にインストールができる�
 \end{itemize}
 \setlength{\parskip}{0.1cm} % 段落間
 \setlength{\itemsep}{0.1cm} 
-\subsection*{ユーザーの場合}
+\subsubsection*{ユーザーの場合}
 \begin{itemize}
     \setlength{\parskip}{0.1cm} % 段落間
     \setlength{\itemsep}{0.1cm} 
@@ -988,7 +1013,7 @@ SSHまたはKubernetes APIを介してlinuxサーバのクラスターへのア�
 
 
 
-\subsection*{Teleportの構成要素}
+\subsubsection*{Teleportの構成要素}
 Teleportの仕組みを解説する前に、用語の説明を行う。
 
 
@@ -1017,16 +1042,27 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
     \item ノード\mbox{}\\「サーバ」または「コンピュータ」と同義語。SSH接続できるもの。
     \item ユーザ\mbox{}\\ノード上で一連の操作を実行できる人や、マシン。
     \item クラスター\mbox{}\\連携して動作するノードのグループであり、単一のシステムとみなすことができる。
-    \item CA（認証局）\mbox{}\\公開鍵/秘密鍵のペアの形式でSSL証明書を発行する。
-    \item テレポートノード\mbox{}\\テレポートサービスを実行しているノード。許可されたテレポートユーザがアクセスできる。
-    \item テレポートユーザ\mbox{}\\テレポートクラスタへアクセスしたいユーザ。ユーザはユーザ名とパスワードを登録する必要がある。
-    \item テレポートクラスタ\mbox{}\\１つ以上のノードで構成され、各ノードは同じCAによって署名された証明書を持つ。
+    \item 認証局（CA）\mbox{}\\公開鍵/秘密鍵のペアの形式でSSL証明書を発行する。
+    \item Teleportノード\mbox{}\\テレポートサービスを実行しているノード。許可されたテレポートユーザがアクセスできる。
+    \item Teleportユーザ\mbox{}\\テレポートクラスタへアクセスしたいユーザ。ユーザはユーザ名とパスワードを登録する必要がある。
+    \item Teleportクラスタ\mbox{}\\１つ以上のノードで構成され、各ノードは同じCAによって署名された証明書を持つ。
     
-    \item テレポートCA\mbox{}\\テレポートは、認証サービスの機能として２つの内部CAを運用する。一つはユーザ証明書の署名を行い、
+    \item Teleport認証局\mbox{}\\テレポートは、認証サービスの機能として２つの内部CAを運用する。一つはユーザ証明書の署名を行い、
     もう一つはノード証明書の署名に使用される。
 
     
 \end{itemize}
+
+\subsubsection{Teleportサービス}
+Teleportでは、「ノード」、「認証」、「プロキシ」の３つのサービスが連携して機能している。
+Teleportノードは、SSHを使用してリモートでアクセスできるサーバーである。
+「OpenSSH」、「TeleportCLIクライアント（tsh）」、「Webブラウザー」を使用することでTeleport
+ノードにログインすることができる。
+
+Teleport認証局はは、ユーザとノードを認証し、ノードへのユーザーアクセスを承認し、ユーザーとノードに発行
+された証明書に署名することで認証局として機能する。\par
+TeleportProxyは、ユーザー資格情報を認証サービスに転送し、認証が成功した後、要求されたノードへの接続を
+作成し、WebUIを提供する。
 
 \subsection*{Teleportの接続までの流れ}
 下図の詳細なアーキテクチャを使って説明を行う。
@@ -1035,23 +1071,40 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
 
     \item クライアント接続を開始する\mbox{}\\クライアントは、CLIインターフェースやWebブラウザーを使用してプロキシ（Gateway）へSSH接続を始める。
     そのとき、クライアントは証明書を提供する。\\
-    ------------------ここで図の挿入ーーーーーーーー\\\\\\\\\\\\\\
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=1.0\textwidth,page=2]{graphs/teleport_archtecture.pdf}
+        \caption{クライアント接続開始}
+        \label{teleport_connect}
+    \end{figure}
+
 
     \item クライアント証明書の認証\mbox{}\\
     プロキシは、送信された証明書が以前に認証サーバ（CA）によって署名されているかどうかを確認する。もし署名がされていなかった場合（初回ログイン時）
     や証明書の有効期限が切れているとき、プロキシは接続を拒否し、パスワードと二段階認証でのログインをクライアントに求める。
     二段階認証は、Google Authenticatorなどを用いて行う。HTTPS経由でプロキシに送信される。
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=1.0\textwidth,page=3]{graphs/teleport_archtecture.pdf}
+        \caption{クライアント証明書の認証}
+        \label{teleport_certificate}
+    \end{figure}
+
     
     \item クライアントが接続要求するテレポートノードを調べる。\mbox{}\\
-    ーーーーーーーーーーーーーーーここで図を挿入しておきたいーーーーーーーー
-    ＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾\\\\
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=1.0\textwidth,page=4]{graphs/teleport_archtecture.pdf}
+        \caption{ノードの検索}
+        \label{search_node}
+    \end{figure}
 
 
     このステップで、プロキシーはクラスター内の要求されたノードを
-    見つけようとする。プロキシがノードのIPアドレスを見つける検索メカニズムは３つある。
+    見つけようとする。プロキシがノードのIPアドレスを見つける検索メカニズムは３パターンある。
     \begin{enumerate}[(1)]
-        \item DNSをしようして、クライアントから要求された名前解決を行う。
-        \item これに登録されているノードがあるかどうか認証サーバに尋ねる。
+        \item DNSを使用して、クライアントから要求された名前解決を行う。
+        \item 登録されているノードがあるかどうか認証サーバに尋ねる。
         \item 要求された名前と一致するラベルを持つノードを見つけるように認証サーバに要求する。
     \end{enumerate}
     その後、ノードが見つかると、プロキシはクライアントと要求されたノード間の接続を確立する。その後、宛先ノードはセッションの記録を開始し、
@@ -1059,13 +1112,30 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
     \item ノード証明書の認証\mbox{}\\ノードは接続要求を受信すると、認証サーバを使用してノードの証明書を検証しノードのクラスタ
     メンバーシップを検証する。ノード証明書が有効な場合、ノードは、クラスター内のノードおよびユーザーに関する情報へのアクセスを
     提供する認証サーバーAPIへのアクセスを許可される。
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=1.0\textwidth,page=5]{graphs/teleport_archtecture.pdf}
+        \caption{ノードの認証}
+        \label{search_node}
+    \end{figure}
 
     \item ユーザノードのアクセスを許可する\mbox{}\\ノードは認証サーバーに、接続しているクライアントのOS
     ユーザーのリスト（ユーザーマッピング）を提供するように要求し、クライアントが要求されたOSログインの使用を許可されている
     ことを確認する。
     最後に、クライアントはノードへのSSH接続を作成することを許可される。
-
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=1.0\textwidth,page=6]{graphs/teleport_archtecture.pdf}
+        \caption{ノードへのアクセス許可}
+        \label{search_node}
+    \end{figure}
 \end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=7]{graphs/teleport_archtecture.pdf}
+    \caption{SSH接続の完了}
+    \label{search_node}
+\end{figure}
 
 
 \subsection*{使用方法}
