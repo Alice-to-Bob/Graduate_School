@@ -7,7 +7,17 @@
 \usepackage{here}
 \usepackage{enumerate}
 
-
+\usepackage{url}
+\usepackage{listings,jvlisting}
+\lstset{
+    basicstyle={\ttfamily\small}, %書体の指定
+    frame=tRBl, %フレームの指定
+    framesep=10pt, %フレームと中身（コード）の間隔
+    breaklines=true, %行が長くなった場合の改行
+    linewidth=12cm, %フレームの横幅
+    lineskip=-0.5ex, %行間の調整
+    tabsize=2 %Tabを何文字幅にするかの指定
+}
 
 %\input{link.bib}
 %各種パッケージ
@@ -365,10 +375,16 @@ SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイル�
     \item セキュアリモートログイン\mbox{}\\通常,
     Secure Shell（SSH）と呼ばれる機能のこと。セキュアリモートログインを使用すると、インターネット経由でも安全に、
     運用端末からSSHサーバーへログインできる。また、通信内容を他者に見られないため、安全な運用管理を実現できる。
+    \\使用コマンド例   \$ ssh pc15@150.65.136.94
+
     \item セキュアコピー(scp)\mbox{}\\セキュアコピーを使用すると、SSHサーバからファイル転送を受け取ることできる。
     また、通信内容を他者に見られたり、改ざんされたりすることがないため、安全な運用管理を実現できる。
+    \\使用コマンド例   \$ scp -r pc15@150.65.136.94:/home/pc15/画像 /Users/shuto/desktop\\
+    これにより、sshサーバから、画像ディレクトリをファイル転送を受け取れた。
+
     \item セキュアFTP(sftp)\mbox{}\\セキュアFTPを使用すると、SSHサーバーにファイルを転送することができる。
     セキュアコピーと同様に、通信内容の盗聴や、改ざんを防ぐことができる。
+    
 \end{enumerate}
 
 %更にログインしなくてもサーバのコマンドを実行できるSSHサーバへログインするためのユーザの認証方法には、
@@ -1028,7 +1044,7 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
             ユーザ&ノード上で一連の操作を実行できる人や、マシン。\\ \hline
             クラスター&連携して動作するノードのグループであり、単一のシステムとみなすことができる。\\ \hline
             CA（認証局）&公開鍵/秘密鍵のペアの形式でSSL証明書を発行する。\\ \hline
-            テレポートノード&テレポートサービスを実行しているノード。許可されたテレポートユーザがアクセスできる。\\ \hline
+            テレポー�����ノード&テレポートサービスを実行しているノード。許可されたテレポートユーザがアクセスできる。\\ \hline
             テレポートユーザ&テレポートクラスタへアクセスしたいユーザ。ユーザはユーザ名とパスワードを登録する必要がある。\\ \hline
             テレポートクラスタ&１つ以上のノードで構成され、各ノードは同じCAによって署名された証明書を持つ。\\ \hline
             テレポートCA&テレポートは、認証サービスの機能として２つの内部CAを運用する。一つはユーザ証明書の署名を行い、\\ \hline
@@ -1073,7 +1089,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     そのとき、クライアントは証明書を提供する。\\
     \begin{figure}[H]
         \centering
-        \includegraphics*[width=1.0\textwidth,page=2]{graphs/teleport_archtecture.pdf}
+        \includegraphics*[width=0.8\textwidth,page=2]{graphs/teleport_archtecture.pdf}
         \caption{クライアント接続開始}
         \label{teleport_connect}
     \end{figure}
@@ -1085,7 +1101,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     二段階認証は、Google Authenticatorなどを用いて行う。HTTPS経由でプロキシに送信される。
     \begin{figure}[H]
         \centering
-        \includegraphics*[width=1.0\textwidth,page=3]{graphs/teleport_archtecture.pdf}
+        \includegraphics*[width=0.8\textwidth,page=3]{graphs/teleport_archtecture.pdf}
         \caption{クライアント証明書の認証}
         \label{teleport_certificate}
     \end{figure}
@@ -1098,7 +1114,6 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
         \caption{ノードの検索}
         \label{search_node}
     \end{figure}
-
 
     このステップで、プロキシーはクラスター内の要求されたノードを
     見つけようとする。プロキシがノードのIPアドレスを見つける検索メカニズムは３パターンある。
@@ -1122,21 +1137,24 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     \item ユーザノードのアクセスを許可する\mbox{}\\ノードは認証サーバーに、接続しているクライアントのOS
     ユーザーのリスト（ユーザーマッピング）を提供するように要求し、クライアントが要求されたOSログインの使用を許可されている
     ことを確認する。
-    最後に、クライアントはノードへのSSH接続を作成することを許可される。
+    
     \begin{figure}[H]
         \centering
         \includegraphics*[width=1.0\textwidth,page=6]{graphs/teleport_archtecture.pdf}
         \caption{ノードへのアクセス許可}
         \label{search_node}
     \end{figure}
-\end{enumerate}
-\begin{figure}[H]
-    \centering
-    \includegraphics*[width=1.0\textwidth,page=7]{graphs/teleport_archtecture.pdf}
-    \caption{SSH接続の完了}
-    \label{search_node}
-\end{figure}
+    
 
+    \item 最後に、クライアントはノードへのSSH接続を作成することを許可され、目的のノードへのSSH接続を行う。
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=1.0\textwidth,page=7]{graphs/teleport_archtecture.pdf}
+        \caption{SSH接続の完了}
+        \label{search_node}
+    \end{figure}
+    
+\end{enumerate}
 
 \subsection*{使用方法}
 
@@ -1162,44 +1180,261 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
 
 \section{SoftEther VPN}
 
-\subsection*{SoftEther VPNとは}
+\subsubsection*{SoftEther VPNとは}
 
 SoftEther VPN(https://ja.softether.org/)とは、筑波大学における学術目的の研究プロジェクト「SoftEther プロジェクト」により
 運営されている、オープンソースソフトウェアである。Windows,Linux,Mac,FreeBSDおよびSolaris上で動作する。
 
-
-
-\subsection*{SoftEther VPNの特徴}
+\subsubsection*{SoftEther VPNの特徴}
 SoftEther VPNは、カプセル化およびトンネリングの通信をレイヤ2、のデータリンク層で行なっている。
 
 SoftEther VPNを使用することで、通常のLANカード、スイッチングHUB及びレイヤ３スイッチなどの
 ネットワークデバイスをソフトウェアによって仮想的に実現し、それらの間をTCP/IPプロトコルをベースとした、
 「SoftEther VPN プロトコル」と呼ばれるトンネルで接続することで、柔軟性の高いVPN構築を実現している。
 
+\subsubsection{SoftEtherVPNの使い方}
+SoftEtherVPNは様々な種類のVPNの利用パターンを想定している。
+その一部を以下に挙げる。
 
-柔軟なリモートアクセスVPN及び拠点間接続VPNを実現するために、Ehternetデバイスの仮想化する。
+\begin{itemize}
+    \item 企業内におけるVPN
+    \begin{itemize}
+        \item PC間接続VPN
+        \item リモートアクセスVPN
+        \item 拠点間接続VPN
+    \end{itemize}
+    \item クラウドにおけるVPN
+    \begin{itemize}
+        \item ローカルPCをクラウドへ参加させる方法
+        \item クラウドVMを企業内LANに参加させる方法
+        \item クラウドとLANのブリッジVPN接続
+        \item 複数クラウド間のVPNブリッジ接続
+    \end{itemize}
+    \item モバイルにおけるVPN
+    \begin{itemize}
+        \item iPhoneおよびAndroid
+        \item WindowsやMacのモバイルPC
+    \end{itemize}
+\end{itemize}
 
+
+本研究では、「リモートアクセスVPN」用にSoftEtherVPN Server、Clientを各種インストールし、設定を行う。
+
+\subsection{リモートアクセスVPN (SoftEtherVPN)}
+SoftEtherVPNには、「VPN Server」、「VPN Client」、「VPN Bridge」の大きく３種類の要素がある。
+リモートアクセスVPNの実現には、「VPN Server」と「VPN Client」を用いる。
+
+SoftEtherVPNを使用したリモートアクセスVPNでの、イメージ図を下図\ref{remoteaccess}に記す。
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=1]{graphs/softetherVPN.pdf}
+    \caption{SoftEtherVPNのリモートアクセス利用}
+    \label{remoteaccess}
+\end{figure}
+
+
+
+リモートアクセスVPNを構築するためには、仮想的なネットワークセグメントと物理的なEthernetネットワークセグメント
+との間を「ローカルブリッジ接続機能」により接続する必要がある。
+そうすることにより、VPNを経由して仮想HUBに接続下すべてのリモートコンピュータは、物理的な既存のEthernetセグメントの
+一部として扱われるようになる。
+
+\subsubsection*{ローカルブリッジとは}
+「ローカルブリッジ接続機能」を使用すると、VPN ServerまたはVPN Bridge内で動作している仮想HUBと、そのサーバーコンピュータ上
+に接続されている物理的なLANカードとの間をレイヤ２（データリンク層）で接続し、元々別々のEthernetセグメントとして
+動作していた2つのセグメントを一つのセグメントに結合することができる。\par
+ローカルブリッジにより、仮想HUBに接続しているコンピュータと物理的なLANに接続しているコンピュータの間で互いに
+相手が物理的には別のネットワークに接続されているにも関わらず、論理的には同一のEthernetセグメントに接続されている
+事になり、Ethernetのレベルで自由に通信することができるようになる。\par
+ローカルブリッジを使用することで、リモートアクセス型VPNおよび拠点間接続型のVPNを簡単に構築することができる。\par
+ローカルブリッジを使用する上での注意点として、ローカルブリッジ用に新しい物理的なLANカードを増設する必要がある
+ということである。ローカルブリッジ接続先として使用したいLANカードが、そのVPN ServerやVPN Bridgeとして通常の
+通信に使用しているLANカードであってはいけないのである。
+
+\subsection*{SoftEtherVPNのインストールとリモートアクセスVPNの構築}
+SoftEtherVPNには、「VPN Client」、「VPN Server」のそれぞれ別々の種類のソフトウェアが用意されている。そのため、
+それぞれに対するインストール方法と設定をここに記す。
+本研究でのネットワーク構成に合わせたリモートアクセス型VPNの図を下図\ref{softether}に表す。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=2]{graphs/softetherVPN.pdf}
+    \caption{リモートアクセスVPN}
+    \label{softether}
+\end{figure}
+
+\subsubsection*{SoftEther VPN Serverのインストールと設定}
+ここでは、まずVPNServer側のインストールと設定をまとめる。\par
+
+まず、https://www.softether-download.com/ja.aspx?product=softether　からlinux用のものをダウンロードする。
+
+\begin{enumerate}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item \$ tar -xzvf softether-vpnclient-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz\\ (解凍)
+    \item \$ cd vpnclient/
+    \item \$ make \\ (makeコマンドでビルドを行う。ライセンスの同意を求められるため、1を入力して同意する。)
+    \item \$ cd ../
+    \item \$ sudo mv vpnclient/ /usr/local/ \\ (生成されたディレクトリを /usr/local/ に移動する。)
+    \item \$ cd /usr/local
+    \item \$ sudo chown -R root:root vpnclient
+    \item \$ cd vpnclient
+    \item \$ sudo chmod 600 *
+    \item \$ sudo chmod 700 vpncmd
+    \item \$ sudo chmod 700 vpnclient \\(パーミッションを設定する。)
+    
+\end{enumerate}
+
+サーバー側に、サービスファイル(/etc/systemd/system/vpnclient.service)を定義する。
+\begin{lstlisting}
+[Unit]
+Description=SoftEther VPN Client
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/local/vpnclient/vpnclient start
+ExecStop=/usr/local/vpnclient/vpnclient stop
+Type=forking
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target
+
+\end{lstlisting}
+systemctlコマンドでサービスの開始と有効化を行う。
+\begin{enumerate}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item \$ sudo systemctl start vpnserver
+    \item \$ sudo systemctl enable vpnserver
+\end{enumerate}
+
+次にSoftEther VPN Serverの設定を行う。
+設定はGUIの管理ツール「SoftEther VPN Server Manager」か、コマンドラインツールの「vpncmd」を使って行う。
+今回はコマンドラインツール「vpncmd」を使って設定した。ネットワークが繋がっていれば、vpncmdを使ってリモート設定も行える。
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=1]{graphs/serverlogin.png}
+    \caption{vpncmd起動画面(Server)}
+    \label{softetherconfig}
+\end{figure}
+
+
+vpncmd起動後は、Helpを参照しながら必要に応じて拡張機能の各種設定を行う。
+\begin{description}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item[VPN Server\textgreater] ServerPasswordSet\\(管理者パスワード設定)
+    \item[VPN Server\textgreater] BridgeCreate \\(ローカルブリッジ接続を作成する)
+    \item[VPN Server\textgreater] IPsecEnable \\(L2TP/IPSecサーバーを有効化する)
+
+\end{description}
+
+次に、仮想HUBの設定を行う。本研究では、仮想HUB名を「Subthemehub」として使用するユーザーを「shuto」とした。
+vpncmdで仮想HUB設定モードに移行するには、起動時に仮想HUB名を入力するか、Server設定モードで以下のコマンド入力すれば良い。
+
+
+\begin{description}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item[VPN Server\textgreater] hublist\\(仮想HUB一覧出力)
+    \item[VPN Server\textgreater] hubCreate subthemehub \\(subthemehubという名前の仮想HUBを作成する)
+    \item[VPN Server\textgreater] hub subthemehub \\(subthemehubの設定モードに移行する)
+    \item[VPN Server/subthemehub\textgreater] 
+\end{description}
+仮想HUBの新規作成ができたら、仮想HUB設定モードでSoftether VPNを利用するユーザの登録を行う。
+\begin{description}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item[VPN Server/subthemehub\textgreater] userlist(ユーザーの一覧出力)
+    \item[VPN Server\textgreater] userCreate shuto \\(shutoという名前のユーザーを作成する)
+    \item[VPN Server\textgreater] userpasswordset shuto \\(shutoの認証をパスワード認証に切り替える)
+\end{description}
+
+\subsubsection*{SoftEther VPN Clientのインストールと設定}
+SoftEther VPN Clientのインストール方法は、上記のServerとほぼ同じコマンドであり、serverをclientに置き換えるだけである。
+MacOSでVPN Clientを使用するには、tuntapのインストールが必須である。homebrewで簡単にインストールできる。
+tuntapは仮想LANカードの作成に必要になる。\par
+SoftEther VPN clientの起動は、centosの場合はVPN serverとほぼ同じコマンドだが、
+今回使用したMacでは、\$ sudo ./vpnclient start　と入力する必要がある。\par
+次に、VPN Clientの設定を記す。VPN Serverと同じように「vpncmd」を使ってコマンドラインで設定を行なった。
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=1]{graphs/clientconfig3.png}
+    \caption{vpncmd起動画面(Client)}
+    \label{clientconfig}
+\end{figure}
+VPNClintでは、始めに利用する仮想LANカードを作成する必要がある。本研究では「SubthemeNic」という名前のLANカードを
+作成した。
+\begin{description}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item[VPN Client\textgreater] NicCreate SubthemeNic  (新規仮想LANカードの作成)
+\end{description}
+仮想LANカードの作成が完了したら、次に接続設定を行う。
+
+\if0
+\begin{description}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item[VPN Client\textgreater] AccountCreate \\新規接続設定の作成
+
+\end{description}
+\fi
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=0.8\textwidth,page=1]{graphs/accountcreate.png}
+    \caption{接続設定作成画面}
+    \label{accountcreate}
+\end{figure}
+
+VPN Serverでの設定でパスワード認証を設定したため、VPN Clientでも同じパスワードを登録する必要がある。
+\begin{description}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item[VPN Client\textgreater] AccountPasswordSet Subtheme\\ これによりVPNClientの設定が完了した。
+\end{description}
+
+
+\subsubsection*{SoftEtherVPN Serverへの接続}
+最後に、VPNClientから、VPNServerに接続する。
+\begin{description}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item[VPN Client\textgreater] accountconnect subtheme（使用する接続設定を指定）\\ 
+    \item[\$] sudo ipconfig set tap0 dhcp \\(ここからvpncmdを抜けて、コマンドラインで行う。)
+    \item[\$] ifconfig tap0 \\
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=0.8\textwidth,page=1]{graphs/dhcpsuccess.png}
+        \caption{ifconfig tap0の出力}
+        \label{tap0の出力}
+        結果、隔離ネットワークと同じセグメントのIPアドレスを取得できた。
+    \end{figure}
+
+\end{description}
+
+
+
+
+
+
+
+\if0
 \subsection*{SoftEther VPN Server の仕様}
-
 同時接続可能な最大VPNセッション数
 4096個
-
-
-
-
-
 ユーザ認証：
-
 パスワード認証
-
 Radius認証
-
 Active Directory 認証
-
 固有証明書認証
-
 署名済み証明書認証
-
+\fi
 
 
 

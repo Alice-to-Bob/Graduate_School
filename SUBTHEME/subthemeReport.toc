@@ -16,7 +16,7 @@
 \contentsline {subsection}{\numberline {2.4.1}SSHの機能}{12}% 
 \contentsline {subsection}{\numberline {2.4.2}SSH接続までの流れ}{13}% 
 \contentsline {section}{\numberline {2.5}VPN}{15}% 
-\contentsline {subsection}{\numberline {2.5.1}IPSec-VPN}{15}% 
+\contentsline {subsection}{\numberline {2.5.1}IPSec-VPN}{16}% 
 \contentsline {subsection}{\numberline {2.5.2}SSL-VPN}{16}% 
 \contentsline {chapter}{\numberline {第3章}認証技術}{20}% 
 \contentsline {section}{\numberline {3.1}LDAP}{20}% 
@@ -33,5 +33,7 @@
 \contentsline {section}{\numberline {6.1}teleport}{34}% 
 \contentsline {section}{\numberline {6.2}teleport}{35}% 
 \contentsline {subsubsection}{Teleportサービス}{36}% 
-\contentsline {section}{\numberline {6.3}SoftEther VPN}{41}% 
-\contentsline {chapter}{\numberline {第7章}まとめ}{42}% 
+\contentsline {section}{\numberline {6.3}SoftEther VPN}{40}% 
+\contentsline {subsubsection}{SoftEtherVPNの使い方}{41}% 
+\contentsline {subsection}{\numberline {6.3.1}リモートアクセスVPN (SoftEtherVPN)}{41}% 
+\contentsline {chapter}{\numberline {第7章}まとめ}{49}% 
