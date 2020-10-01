@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  23 SEP 2020 19:14
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  1 OCT 2020 20:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -61,13 +61,18 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks18
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks19
+\AP@partial=\box45
+\AP@footins=\box46
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count95
-\lst@gtempboxa=\box45
-\lst@token=\toks19
+\lst@gtempboxa=\box47
+\lst@token=\toks20
 \lst@length=\count96
 \lst@currlwidth=\dimen123
 \lst@column=\count97
@@ -81,7 +86,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
 \c@lstnumber=\count101
 \lst@skipnumbers=\count102
-\lst@framebox=\box46
+\lst@framebox=\box48
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2018/09/02 1.7 listings configuration
 ))
@@ -112,39 +117,39 @@ LaTeX Warning: Label `search_node' multiply defined.
 )
 \openout1 = `subthemeReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 \c@lstlisting=\count108
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 36.
+(Font)              <14.4> on input line 37.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 36.
+(Font)              <7> on input line 37.
  [1
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 40.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10.95> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 40.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 41.
  [1]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 61.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 60.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 61.
  (./subthemeReport.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 2.
@@ -161,20 +166,18 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [2]
 第 1 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 64.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 65.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 64.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 65.
 File: graphs/telework_list.pdf Graphic file (type pdf)
 <graphs/telework_list.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
 [3
 
 
 ]
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -185,194 +188,26 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4] [5]
 第 2 章
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 150.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 151.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 150.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 151.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 156.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 157.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 156.
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 157.
+ [6
 
 ]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7] [8] [9] [10]
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
- [11]
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
+ [7
 
+] [8
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12]
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13] [14]
-File: graphs/telework_list.pdf Graphic file (type pdf)
-<graphs/telework_list.pdf>
- [15]
-File: graphs/telework_list.pdf Graphic file (type pdf)
-<graphs/telework_list.pdf>
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[16]
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[17]
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[18] [19]
-第 3 章
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[20
-
-] [21]
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[22] [23]
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[24] [25] [26]
-第 4 章
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
-File: graphs/telework_list.pdf Graphic file (type pdf)
-<graphs/telework_list.pdf>
-[27
-
-]
-File: graphs/telework_list.pdf Graphic file (type pdf)
-<graphs/telework_list.pdf>
- [28] [29]
-第 5 章
-File: graphs/telework_list.pdf Graphic file (type pdf)
-<graphs/telework_list.pdf>
-[30
-
-]
-File: graphs/network_archtecture.pdf Graphic file (type pdf)
-<graphs/network_archtecture.pdf>
- [31] [32]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 950.
- (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 950.
- [33]
-第 6 章
-File: graphs/telework_list.pdf Graphic file (type pdf)
-<graphs/telework_list.pdf>
-[34
-
-]
-File: graphs/teleport_archtecture.pdf Graphic file (type pdf)
-<graphs/teleport_archtecture.pdf>
- Excluding 'comment' comment. [35]
-File: graphs/teleport_archtecture.pdf Graphic file (type pdf)
-<graphs/teleport_archtecture.pdf>
- [36]
-File: graphs/teleport_archtecture.pdf Graphic file (type pdf)
-<graphs/teleport_archtecture.pdf>
-File: graphs/teleport_archtecture.pdf Graphic file (type pdf)
-<graphs/teleport_archtecture.pdf>
- [37]
-File: graphs/teleport_archtecture.pdf Graphic file (type pdf)
-<graphs/teleport_archtecture.pdf>
- [38]
-File: graphs/teleport_archtecture.pdf Graphic file (type pdf)
-<graphs/teleport_archtecture.pdf>
-File: graphs/teleport_archtecture.pdf Graphic file (type pdf)
-<graphs/teleport_archtecture.pdf>
- [39] Excluding 'comment' comment. [40]
-File: graphs/softetherVPN.pdf Graphic file (type pdf)
-<graphs/softetherVPN.pdf>
- [41] [42]
-File: graphs/softetherVPN.pdf Graphic file (type pdf)
-<graphs/softetherVPN.pdf>
- [43]
-File: graphs/serverlogin.png Graphic file (type bmp)
-<graphs/serverlogin.png>
- [44]
-LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/b/it' tried instead on input line 1329.
- [45]
-File: graphs/clientconfig3.png Graphic file (type bmp)
-<graphs/clientconfig3.png>
-File: graphs/accountcreate.png Graphic file (type bmp)
-<graphs/accountcreate.png>
- [46]
-File: graphs/dhcpsuccess.png Graphic file (type bmp)
-<graphs/dhcpsuccess.png>
- [47] [48]
-第 7 章
-(./subthemeReport.bbl [49
-
-]) [50
-
-] (./subthemeReport.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
-Here is how much of TeX's memory you used:
- 2727 strings out of 493226
- 37796 string characters out of 6144095
- 126654 words of memory out of 5000000
- 6680 multiletter control sequences out of 15000+600000
- 17771 words of font info for 69 fonts, out of 8000000 for 9000
- 929 hyphenation exceptions out of 8191
- 26i,7n,32p,287b,1083s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on subthemeReport.dvi (52 pages, 116572 bytes).
+] [9] [10]
+File: graphs/network

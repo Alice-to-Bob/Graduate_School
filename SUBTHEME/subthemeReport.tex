@@ -6,6 +6,7 @@
 \usepackage{comment}
 \usepackage{here}
 \usepackage{enumerate}
+\usepackage{afterpage}
 
 \usepackage{url}
 \usepackage{listings,jvlisting}
@@ -96,13 +97,6 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 下表\ref{telework_table}によると6パターンのうち1、2、6の3パターンが外部から社内サーバにアクセスを必要とする「オンプレミス型」のもので、
 3、4、5の3パターンはインターネット上のクラウドサービスを利用している「オフプレミス型」である。
 
-\begin{table}[h]
-    \centering
-    \includegraphics*[width=1.0\textwidth,page=1]{graphs/telework_list.pdf}
-    \caption{テレワークの6種類のパターン}
-    \label{telework_table}
-\end{table}
-
 それぞれのパターンの細かな違いは、テレワーク利用端末にデータを保存できるかなどであり、
 オンプレミス型もオフプレミス型どちらもインターネットを介して、サーバにアクセスしている。
 \par 本研究では
@@ -121,10 +115,17 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 %オープンソースとして公開しているものも存在する、
 
 
+\begin{table}[h]
+    \centering
+    \caption{テレワークの6種類のパターン}
+    \includegraphics*[width=1.0\textwidth,page=1]{graphs/telework_list.pdf}
+    \label{telework_table}
+\end{table}
+
 
 \begin{figure}[h]
     \centering
-    \includegraphics*[width=1.0\textwidth,page=14]{graphs/network_archtecture.pdf}
+    \includegraphics*[width=0.9\textwidth,page=14]{graphs/network_archtecture.pdf}
     \caption{ オフプレミス型}
     \label{cloud_graph}
 \end{figure}
@@ -132,7 +133,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 
 \begin{figure}[h]
     \centering
-    \includegraphics*[width=1.0\textwidth,page=15]{graphs/network_archtecture.pdf}
+    \includegraphics*[width=0.9\textwidth,page=15]{graphs/network_archtecture.pdf}
     \caption{オンプレミス型}
     \label{onpremise_graph}
 \end{figure}
@@ -160,16 +161,30 @@ AとBで共通の鍵を使用して、暗号化と復号化を行う。
 
 共通鍵暗号方式は、後述の公開鍵暗号方式に比べて、演算の処理量が少ないとういう利点ある。
 そのため、SSHプロトコルでは、通信内容の
-暗号化にはこの共通鍵暗号方式を採用している。
+暗号化にはこの共通鍵暗号方式を採用している。\\
+
+代表的な暗号化アルゴリズムに「AES」が存在する。
+
+\afterpage{\clearpage}
+\newpage
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.0\textwidth, page=8]{graphs/network_archtecture.pdf}
+    \includegraphics[width=0.9\textwidth, page=8]{graphs/network_archtecture.pdf}
     \caption{共通鍵暗号方式での暗号化}
     \label{shared_key}
 \end{figure}
 
-代表的な暗号化アルゴリズムに「AES」が存在する。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth, page=9]{graphs/network_archtecture.pdf}
+    \caption{公開鍵暗号方式での暗号化}
+    \label{public_key}
+\end{figure}
+
+
+\afterpage{\clearpage}
+\newpage
 \subsection{公開鍵暗号方式}
 公開鍵暗号方式は、二種類の鍵である公開鍵と秘密鍵をペアで使用する。この公開鍵と秘密鍵には次に示す性質があり、公開鍵暗号方式はこれら
 の性質を利用して暗号化や署名を実現している。
@@ -183,16 +198,8 @@ AとBで共通の鍵を使用して、暗号化と復号化を行う。
 公開鍵暗号方式での暗号化について下図\ref{public_key}に示す。この図では、鍵ペアを作成したBが、公開鍵をAに公開してる。Aは、Bの公開鍵を使用して
 平文を暗号化して、Bへ送付する。送付された暗号文は、B自身の秘密鍵でのみ復号できる。
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.0\textwidth, page=9]{graphs/network_archtecture.pdf}
-    \caption{公開鍵暗号方式での暗号化}
-    \label{public_key}
-\end{figure}
 
 代表的な暗号化アルゴリズムに「RSA暗号」「Diffi-Hellman鍵共有」等がある。
-
-
 
 \section{トンネリング(Tunneling)}\label{Tunnel}
 ここでは、トンネリングの概要と\ref{aboutVPN}節に関係するVPNトンネリングプロトコルの説明を行う。
@@ -356,8 +363,8 @@ SSHには「SSHv1」と「SSHv2」の二種類のバージョンが存在し、�
 \end{figure}
 
 
-%SSHは二種類のバージョンが存在し「SSH1」と、それよりセキュリティ面で向上させた「SSH2」が存在する。
-
+\afterpage{\clearpage}
+\newpage
 
 SSHの技術を用いるために、「OpenSSH」というソフトウェアが一般的に使用される。
 認証方式として大きく２つあり、「パスワード認証」と「公開鍵認証」が使われる。
@@ -449,8 +456,8 @@ VPNの実現のための主な方法として、ここでは「IPSec-VPN」と�
 まず初めに下表\ref{IPsec_SSL_diference}に２つの違いを簡単にまとめ、その後各々の説明を行う。
 \begin{table}[h]
     \centering
-    \includegraphics[width=1.0\textwidth, page=2]{graphs/telework_list.pdf}
     \caption{IPSec-VPNとSSL-VPNの違い}
+    \includegraphics[width=1.0\textwidth, page=2]{graphs/telework_list.pdf}
     \label{IPsec_SSL_diference}
 \end{table}
 
@@ -473,8 +480,8 @@ SSL-VPNには、「リバースプロキシ」、「ポートフォワーディ�
 
 \begin{table}[h]
     \centering
-    \includegraphics[width=1.0\textwidth, page=3]{graphs/telework_list.pdf}
     \caption{SSL-VPNの実装方式の比較}
+    \includegraphics[width=1.0\textwidth, page=3]{graphs/telework_list.pdf}
     \label{SSLVPN_impliment_table}
 \end{table}
 
@@ -552,7 +559,8 @@ SSLで暗号化される。仮想NICのIPアドレスは、通常SSL-VPN接続�
 
 
 \chapter{認証技術}
-認証技術の解説を行う。
+ここでは認証技術として代表的な技術である、「LDAP」、「Kerberos」、「Radius」、「Active Directory」の解説を行う。
+
 \section{LDAP}
 \subsubsection*{概要}
 LDAP(Lightweight Directory Access Protocol)は、Active Directoryのようなディレクトリサービスにアクセスするためのプロトコルである。
@@ -611,14 +619,15 @@ LDAPを用いたデータの集中管理の様子を下図\ref{LDAP_data_manage}
 %-----------ここは図を使って説明できたら良い。
 
 \section{Kerberos}
-ネットワーク内でのシステムの安全性と利便性は共存しにくいことがある。
+\if0ネットワーク内でのシステムの安全性と利便性は共存しにくいことがある。
 単純にどのサービスがネットワーク上で稼働しているか、そして、使用されているサービスの動作を管理者が追跡するだけでも膨大な時間がかかることがある。
 さらに、FTPプロトコルやTelnetプロトコルのようにデータを暗号化せずにネットワーク上でパスワードを送信させるというような、プロトコル自体が安全でないとき
 ネットワークサービスへのユーザ認証は危険を伴うことになる。
-
+\fi
 
 \subsubsection*{Kerberosとは}
-ネットワーク上でユーザの認証を行う方式の一つである。クライアント/サーバ間の通信を暗号化でき、比較的セキュリティが強固な認証方式となっている。
+ネットワーク上でユーザの認証を行う方式の一つであり、サーバとクライアント間の身元確認のために使用される。
+クライアント/サーバ間の通信を暗号化でき、比較的セキュリティが強固な認証方式となっている。
 ケルベロス認証では一度ログインすると、
 「チケット」と呼ばれるものを用いて認証を行えるようになるため、
 次回のログイン時にID・パスワードを改めて入力する必要がなくなり、シングルサインオン（SSO）を実現できる。\par 
@@ -689,6 +698,13 @@ Radiusによる認証システムは、「Radiusサーバ」、「Radiusクラ�
 \subsubsection*{Radius認証の流れ}
 今回、ユーザがネットワークやネットワーク機器を利用したい場合、
 全体の認証の流れは下図\ref{Radius_Authentication}のようになっている。
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=0.9\textwidth, page=19]{graphs/network_archtecture.pdf}
+        \caption{Radius認証の流れ}
+        \label{Radius_Authentication}
+    \end{center}
+\end{figure}
 \begin{enumerate}
     \setlength{\parskip}{0.1cm} % 段落間
     \setlength{\itemsep}{0.1cm} 
@@ -699,15 +715,10 @@ Radiusによる認証システムは、「Radiusサーバ」、「Radiusクラ�
     \item Radiusクライアントは、受け取ったユーザ名、パスワードを使って、Radiusサーバにアクセス認証のRequestを出す。
     \item Radiusサーバは認証処理を行い、Radiusクライアントに認証可否を伝える。
     \item Radiusクライアントは、ユーザに認証結果を伝える。
+
 \end{enumerate}
 
-\begin{figure}[h]
-    \begin{center}
-        \includegraphics[width=1.0\textwidth, page=19]{graphs/network_archtecture.pdf}
-        \caption{Radius認証の流れ}
-        \label{Radius_Authentication}
-    \end{center}
-\end{figure}
+
 
 \if0
 PCからRadiusクライアントに送信されたユーザ名とパスワードは、RadiusクライアントからRadiusサーバへ"Access-Request"メッセージ
@@ -804,8 +815,8 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 
 \begin{table}[H]
     \centering
-    \includegraphics*[width=1.0\textwidth,page=6]{graphs/telework_list.pdf}
     \caption{サーバーの詳細}
+    \includegraphics*[width=1.0\textwidth,page=6]{graphs/telework_list.pdf}
     \label{server_detail}
 \end{table}
 
@@ -831,8 +842,8 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 
 \begin{table}[H]
     \centering
-    \includegraphics*[width=1.0\textwidth,page=7]{graphs/telework_list.pdf}
     \caption{L2スイッチの詳細}
+    \includegraphics*[width=1.0\textwidth,page=7]{graphs/telework_list.pdf}
     \label{switch_detail}
 \end{table}
 
@@ -863,8 +874,8 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 
 \begin{table}[H]
     \centering
-    \includegraphics*[width=1.0\textwidth,page=4]{graphs/telework_list.pdf}
     \caption{小規模ソフトウェア比較表}
+    \includegraphics*[width=1.0\textwidth,page=4]{graphs/telework_list.pdf}
     \label{shoukibo}
 \end{table}
 
@@ -901,7 +912,7 @@ Clientのみにインストールすればよいため、とても容易に使�
 \end{figure}
 
 
-\subsection*{メリット}
+\subsection*{評価}
 sshuttleを使用するメリットは、「安全性」と「簡易化」が可能になることである。\par
 一般的に、図\ref{network_graph}のような隔離ネットワーク内のホストにアクセスするためには、多段sshやTunnelingを行う必要がある。
 多段sshというのは今回の場合、ClientがまずGateway Serverにsshを行い、その後Gateway Serverのコマンドラインから、隔離ホストにssh接続するというように
@@ -912,6 +923,9 @@ sshuttleを使用するメリットは、「安全性」と「簡易化」が可
 Clientのssh keyを保存しないといけない。しかし、sshuttleでVPNを構築することでGateway Server を経由せずに隔離ホストと接続するため、
 Client-隔離ホスト間で鍵共有するだけでよいため、インターネット等と接続されているGatewayに鍵を保存するより安全である。
 
+
+%は、sshやsslなどのtcpベースの暗号化ストリームを使用できず、
+%独自の暗号化を最初から実装する必要があります。これは非常に複雑でエラーが発生しやすくなります。
 %図のようなネットワーク構成図の場合、隔離ホストにアクセスするためには、クライアントからgateway serverにssh接続を行い、その後再び
 %隔離ホストへsshを行う、「多段ssh」や、gateway serverから隔離ホストへ「tunneling」を行う必要が発生する。
 
@@ -995,8 +1009,8 @@ sshportalはユーザの管理が簡単に行えるように設計されてお�
 
 \begin{table}[H]
     \centering
-    \includegraphics*[width=1.0\textwidth,page=5]{graphs/telework_list.pdf}
     \caption{大規模ソフトウェア比較表}
+    \includegraphics*[width=1.0\textwidth,page=5]{graphs/telework_list.pdf}
     \label{daikibo}
 \end{table}
 \section{teleport}
@@ -1033,25 +1047,6 @@ SSHまたはKubernetes APIを介してlinuxサーバのクラスターへのア�
 Teleportの仕組みを解説する前に、用語の説明を行う。
 
 
-%うまいこと表内で用語説明ができなかった。セル内改行がめんどくさかったため、やめた。
-%コメントアウトで削除した。
-\begin{comment}
-    
-    \begin{table}[htb]
-        \begin{tabular}{|c|c|}\hline
-            用語 & 意味\\ \hline \hline
-            ノード&「サーバ」または「コンピュータ」と同義語。SSH接続できるもの。\\ \hline
-            ユーザ&ノード上で一連の操作を実行できる人や、マシン。\\ \hline
-            クラスター&連携して動作するノードのグループであり、単一のシステムとみなすことができる。\\ \hline
-            CA（認証局）&公開鍵/秘密鍵のペアの形式でSSL証明書を発行する。\\ \hline
-            テレポー�����ノード&テレポートサービスを実行しているノード。許可されたテレポートユーザがアクセスできる。\\ \hline
-            テレポートユーザ&テレポートクラスタへアクセスしたいユーザ。ユーザはユーザ名とパスワードを登録する必要がある。\\ \hline
-            テレポートクラスタ&１つ以上のノードで構成され、各ノードは同じCAによって署名された証明書を持つ。\\ \hline
-            テレポートCA&テレポートは、認証サービスの機能として２つの内部CAを運用する。一つはユーザ証明書の署名を行い、\\ \hline
-        \end{tabular}
-    \end{table}
-    もう一つはノード証明書の署名に使用される。
-\end{comment}
     
         
 \begin{itemize}
@@ -1156,7 +1151,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     
 \end{enumerate}
 
-\subsection*{使用方法}
+%\subsection*{使用方法}
 
 
 
@@ -1187,7 +1182,6 @@ SoftEther VPN(https://ja.softether.org/)とは、筑波大学における学術�
 
 \subsubsection*{SoftEther VPNの特徴}
 SoftEther VPNは、カプセル化およびトンネリングの通信をレイヤ2、のデータリンク層で行なっている。
-
 SoftEther VPNを使用することで、通常のLANカード、スイッチングHUB及びレイヤ３スイッチなどの
 ネットワークデバイスをソフトウェアによって仮想的に実現し、それらの間をTCP/IPプロトコルをベースとした、
 「SoftEther VPN プロトコル」と呼ばれるトンネルで接続することで、柔軟性の高いVPN構築を実現している。
@@ -1258,10 +1252,36 @@ SoftEtherVPNには、「VPN Client」、「VPN Server」のそれぞれ別々の
 
 \begin{figure}[H]
     \centering
-    \includegraphics*[width=1.0\textwidth,page=2]{graphs/softetherVPN.pdf}
+    \includegraphics*[width=0.9\textwidth,page=2]{graphs/softetherVPN.pdf}
     \caption{リモートアクセスVPN}
     \label{softether}
 \end{figure}
+\subsubsection*{SoftEther VPN ServerのDHCP設定}
+ここでは、リモートアクセス型のSoftEtherVPNの利用にはDHCPサーバが必須であるため、
+上図\ref{softether}のVPNServer(Centos)をDHCPを行えるよう設定する。あらかじめ"SELinux"は無効化している。\par
+まず、\$ sudo yum -y install dhcp でDHCPをインストールする。その後以下のようにDHCPサーバ設定ファイル(/etc/dhcp/dhcpd.conf)を作成した。
+ここでは、10.1.1.0/24でIPアドレスを自動で割り当ててくれるように記述した。
+\begin{lstlisting}
+#
+# DHCP Server Configuration file.
+#   see /usr/share/doc/dhcp-server/dhcpd.conf.example
+#   see dhcpd.conf(5) man page
+subnet 10.1.1.0 netmask 255.255.255.0 {
+        range 10.1.1.3 10.1.1.254;
+        option routers 10.1.1.1;
+        option broadcast-address 10.0.0.255;
+        option domain-name-servers 10.1.1.1;
+} 
+
+\end{lstlisting}
+\begin{itemize}
+    \setlength{\parskip}{0.0cm} % 段落間
+    \setlength{\itemsep}{0.0cm} 
+    \item \$ sudo systemctl start dhcpd \\(DHCPサーバの起動 )
+    \item \$ sudo systemctl enable dhcpd \\(DHCPサーバの自動起動設定)
+\end{itemize}
+
+その後、クライアント側のDHCPをONにすることで、IPアドレスの自動割当が行える。
 
 \subsubsection*{SoftEther VPN Serverのインストールと設定}
 ここでは、まずVPNServer側のインストールと設定をまとめる。\par
@@ -1285,15 +1305,15 @@ SoftEtherVPNには、「VPN Client」、「VPN Server」のそれぞれ別々の
     
 \end{enumerate}
 
-サーバー側に、サービスファイル(/etc/systemd/system/vpnclient.service)を定義する。
+サーバー側に、サービスファイル(/etc/systemd/system/vpnserver.service)を定義する。
 \begin{lstlisting}
 [Unit]
-Description=SoftEther VPN Client
+Description=SoftEther VPN Server
 After=network.target network-online.target
 
 [Service]
-ExecStart=/usr/local/vpnclient/vpnclient start
-ExecStop=/usr/local/vpnclient/vpnclient stop
+ExecStart=/usr/local/vpnserver/vpnserver start
+ExecStop=/usr/local/vpnserver/vpnserver stop
 Type=forking
 RestartSec=3s
 
@@ -1310,8 +1330,7 @@ systemctlコマンドでサービスの開始と有効化を行う。
 \end{enumerate}
 
 次にSoftEther VPN Serverの設定を行う。
-設定はGUIの管理ツール「SoftEther VPN Server Manager」か、コマンドラインツールの「vpncmd」を使って行う。
-今回はコマンドラインツール「vpncmd」を使って設定した。ネットワークが繋がっていれば、vpncmdを使ってリモート設定も行える。
+設定はコマンドラインツール「vpncmd」を使って設定した。ネットワークが繋がっていれば、vpncmdを使ってリモート設定も行える。
 
 
 \begin{figure}[H]
@@ -1406,7 +1425,7 @@ VPN Serverでの設定でパスワード認証を設定したため、VPN Client
     \setlength{\parskip}{0.0cm} % 段落間
     \setlength{\itemsep}{0.0cm} 
     \item[VPN Client\textgreater] accountconnect subtheme（使用する接続設定を指定）\\ 
-    \item[\$] sudo ipconfig set tap0 dhcp \\(ここからvpncmdを抜けて、コマンドラインで行う。)
+    \item[\$] sudo ipconfig set tap0 dhcp \\(ここからvpncmdを抜けて、コマンドラインで行う。このtap0とは接続設定で使用したNICと同じMACアドレスを持つものを指定する)
     \item[\$] ifconfig tap0 \\
     \begin{figure}[H]
         \centering
@@ -1417,11 +1436,17 @@ VPN Serverでの設定でパスワード認証を設定したため、VPN Client
     \end{figure}
 
 \end{description}
+そして、最後にVPN Client\textgreater AccountStatusGet subtheme で接続状況を確認すると以下\ref{accountstatusget}
+の出力が得られた。これを見ると、暗号スイートが"TLS\_AES\_256\_GCM\_SHA384"をしており、プロトコル詳細を見ると
+TLSにはOpenSSLを使用して、通信内容の暗号化にchacah20という共通鍵暗号とPoly1305というメッセージ認証方式を使用している
+ことがわかる。
 
-
-
-
-
+\begin{figure}[H]
+    \centering
+    \includegraphics*[width=1.0\textwidth,page=1]{graphs/accountstatusget.png}
+    \caption{接続状況の出力画面}
+    \label{accountstatusget}
+\end{figure}
 
 
 \if0
@@ -1441,11 +1466,61 @@ Active Directory 認証
 
 
 \subsection*{SoftEther VPNの評価}
+SoftEtherVPNは、GatewayServer、利用するClient、のそれぞれに対応したソフトウェア（VPNServer、VPNClient、VPNBridge）をインストールし設定を行う必要がある。
+しかし、Githubにだけでなく専用のサイトが存在しそこにOSごとの詳細な説明が記載されているともに、日本発祥のソフトウェアであることにより
+"Qiita"などにも多くの情報が存在するため、とても容易にインストールと設定を行うことができた。
+今回は、認証方式をパスワード認証にしたが、その他にもRADIUS認証やサーバ証明書認証なども行える。また、今回
+利用した"リモートアクセス型"だけでなく、その他十種類以上の利用形態が想定されており、
+とても安全性、柔軟性、拡張性に富んだソフトウェアといえる。
 
-
+デメリットとしては、SoftEtherVPNServerをインストールするサーバがDHCPサーバであることが必須であることだ。
+これにより個人的に利用する場合はGatewayServerを各自DHCPサーバ化する必要がある。サーバ等の知識が必要がなってくる。
 
 
 \chapter{まとめ}
+本論文で前章までで、遠隔アクセスのために使われる技術とそのセキュリティ性向上のために使われている技術を解説し、
+その後それらの技術を用いているいくつかのオープンソースソフトウェアを試用してきた。ここでは全体の総括とまとめを行う。
+
+\subsubsection*{遠隔アクセス技術}
+遠隔アクセス技術では、「SSH」と「VPN」を中心に解説してきた。
+ここで簡単に、２つの評価をする。
+SSHはアプリケーション層で、VPNはトランスポート層で動作する。
+社内ネットワークなどの大規模ネットワークにおいて外部から接続するときに、
+VPNなしのSSHだけの使用であると、SSHの通常使用では単一のサーバにしかアクセスできないため、Gateway
+をくぐり抜けて内部リソースにアクセスするために何度もSSHを行う多段SSHやトンネリングをする必要がある。
+多段SSHの場合は何度も
+コマンドを入力し、認証をしてもらうという煩わしさが存在するし、作成したトンネルの管理等が問題になってくる。
+一方で、VPNを加えて利用することにより、社内ネットワークと外部とで仮想ネットワークを構築することで、
+ほとんどの場合一度のSSHやTelnetの利用で社内リソースにアクセスすることができる。
+利用に関しては、
+sshは、unix系統であればterminalにopensshが標準装備され、アクセス先サーバへのログイン権があれば接続することができる、
+VPNの場合は社内ネットワークへの入り口サーバ（Gateway）にVPN用の設定が必要になってくると同時に
+利用する端末にもVPN用のソフトウェアをインストールしておく必要がある。
+そのため、用途としては
+個人の利用において自宅サーバへのアクセス等の小規模ネットワークにはSSHのみで十分であり、
+より大規模ネットワークである社内ネットへのアクセスにはVPNとSSHを併用するのが最善であると考える。
+
+%\subsubsection*{認証技術}
+%ここでは、代表的な認証技術として「LDAP」、「Kerberos」、「Radius」、「Active Directory」を解説した。\par
+%「LDAP」は、
+
+\subsubsection*{ソフトウェアの試用}
+個人的にとても便利だと感じたのは、「sshuttle」、「SoftEtherVPN」である。\par
+「sshuttle」は、簡易的なVPNを生成できるツールであるが、
+利用するには遠隔アクセスを行う端末側のみにインストールすればよく、Gatewayにsshuttle用の設定を行う必要が
+ないため、すぐに「sshuttle」の利便性を感じることができた。また、sshuttleをインストールすると、
+オプションコマンドでsshも利用できるため、
+sshが非標準のサーバでもコマンドライン からsshをsshuttleをつかって利用できる。
+
+
+\if0
+sshuttleはとても便利そう
+個人の自宅のネットワークにつなぐときにとても向いてそう
+企業などで使う場合には、ファイアーウォールによって遮断されてしまうかもしれない。
+
+
+sshの未来：
+\fi
 
 
 \bibliography{link_subtheme,rfc.bib}
