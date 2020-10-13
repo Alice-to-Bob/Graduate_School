@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  13 OCT 2020 18:22
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  13 OCT 2020 23:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -393,13 +393,20 @@ File: graphs/accountstatusget.png Graphic file (type bmp)
 <graphs/accountstatusget.png>
  [49] [50]
 第 7 章
+File: graphs/telework_list.pdf Graphic file (type pdf)
+<graphs/telework_list.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: graphs/network_archtecture.pdf Graphic file (type pdf)
+<graphs/network_archtecture.pdf>
 [51
 
-] [52] [53] [54]
+] [52] [53] [54] [55]
 第 8 章
-(./subthemeReport.bbl [55
+(./subthemeReport.bbl [56
 
-]) [56
+]) [57
 
 ] (./subthemeReport.aux)
 
@@ -410,12 +417,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2847 strings out of 493226
- 39660 string characters out of 6144095
- 133398 words of memory out of 5000000
- 6775 multiletter control sequences out of 15000+600000
+ 2852 strings out of 493226
+ 39816 string characters out of 6144095
+ 133420 words of memory out of 5000000
+ 6779 multiletter control sequences out of 15000+600000
  19995 words of font info for 70 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  26i,7n,32p,287b,1093s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on subthemeReport.dvi (58 pages, 134712 bytes).
+Output written on subthemeReport.dvi (59 pages, 142588 bytes).

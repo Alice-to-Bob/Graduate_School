@@ -35,6 +35,6 @@
 \contentsline {section}{\numberline {6.2}SoftEther VPN}{41}% 
 \contentsline {subsubsection}{SoftEtherVPNの使い方}{41}% 
 \contentsline {subsection}{\numberline {6.2.1}リモートアクセスVPN (SoftEtherVPN)}{42}% 
-\contentsline {chapter}{\numberline {第7章}通信制御の考察（仮）}{51}% 
-\contentsline {subsubsection}{ユーザの情報の一括管理}{52}% 
-\contentsline {chapter}{\numberline {第8章}まとめ}{55}% 
+\contentsline {chapter}{\numberline {第7章}通信制御に関する考察}{51}% 
+\contentsline {subsubsection}{ユーザの情報の一括管理}{53}% 
+\contentsline {chapter}{\numberline {第8章}まとめ}{56}% 
