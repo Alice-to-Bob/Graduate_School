@@ -8,6 +8,8 @@
 \usepackage{enumerate}
 \usepackage{afterpage}
 
+\usepackage{times}
+
 \usepackage{url}
 \usepackage{listings,jvlisting}
 \lstset{
@@ -558,7 +560,7 @@ SSLで暗号化される。仮想NICのIPアドレスは、通常SSL-VPN接続�
 %VPNを使用する目的は大きく２つある。安く通信内容の漏洩を防ぐことと、ある程度の通信品質（QoS）を確保することである。
 
 
-\chapter{認証技術}
+\chapter{認証技術}\label{Authentication}
 ここでは認証技術として代表的な技術である、「LDAP」、「Kerberos」、「Radius」、「Active Directory」の解説を行う。
 
 \section{LDAP}
@@ -566,6 +568,9 @@ SSLで暗号化される。仮想NICのIPアドレスは、通常SSL-VPN接続�
 LDAP(Lightweight Directory Access Protocol)は、Active Directoryのようなディレクトリサービスにアクセスするためのプロトコルである。
 %ディレクトリサービスというユーザやコンピュータといった情報を管理するサービス
 LDAP自体はプロトコルであり、サービスやシステムを指すものではない。
+LDAP認証は、ユーザの名前とパスワードの組み合わせの検証にのみ使用される。そのため、LDAPを試用して認証を行うようにする前に、ユーザ情報
+はデータベースに存在しなければならない。
+
 LDAPを実装したデータベースをLDAPサーバと呼び、代表的なものに「Open LDAP」、「Active Directory」が存在する。\par
 \subsubsection*{ディレクトリサービス}
 ディレクトリサービスとは、ディレクトリと呼ばれるデータベースから、ユーザ名やマシン名などのキーを元にデータを検索、参照するための
@@ -638,7 +643,7 @@ Kerberosの仕組みを解説する前に、用語「KDC、AS、TGS、プリン�
 \begin{itemize}
     \setlength{\parskip}{0.1cm} % 段落間
     \setlength{\itemsep}{0.1cm} 
-    \item KDC (Key Distribution Center)\mbox{}\\サーバとユーザに関する信頼関係の情報を一括管理する中央データベース。
+    \item KDC (Key Distribution Center)\mbox{}\\サーバとユーザに関する信頼関係の情報を一括管理する中央データベース。これをLDAPサーバにすることもできる。
     \item AS (Authentication Server) \mbox{}\\認証サーバで、ユーザからの認証を受け付けるサーバ。
     \item TGS (Ticket Granting Server) \mbox{}\\チケット発行サーバ。各サーバを利用するためのチケットを発行するサーバ。
     \item プリンシパル (principal) \mbox{}\\ KDC認証を行うユーザやサーバのこと。
@@ -719,6 +724,8 @@ Radiusによる認証システムは、「Radiusサーバ」、「Radiusクラ�
 \end{enumerate}
 
 
+%-----------------------もしできたら、RADIUSとLDAPの連携の図をさしこみたい----------------------------
+
 
 \if0
 PCからRadiusクライアントに送信されたユーザ名とパスワードは、RadiusクライアントからRadiusサーバへ"Access-Request"メッセージ
@@ -728,7 +735,7 @@ PCからRadiusクライアントに送信されたユーザ名とパスワード
 \\
 \fi
 
-\section{Active Directory}
+\section{Active Directory}\label{Active Directory}
 \subsubsection*{Active Directoryとは}
 マイクロソフトによって開発されたディレクトリサービスシステムで、一般的にWindowsOSで使用される。
 Active Directoryは複数のサービスの総称である。
@@ -882,7 +889,7 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 
 
 
-\section{sshuttle}
+\section{sshuttle}\label{sshuttle}
 \subsection*{概要}
 ``sshuttle(https://github.com/sshuttle/sshuttle)"は、簡易VPNツールである。リモートアクセスユーザ(Client)のみにインストールすれば
     使用できる。本論文では、図\ref{network_graph}のClientにインストールを行なった。
@@ -929,7 +936,7 @@ Client-隔離ホスト間で鍵共有するだけでよいため、インター�
 %図のようなネットワーク構成図の場合、隔離ホストにアクセスするためには、クライアントからgateway serverにssh接続を行い、その後再び
 %隔離ホストへsshを行う、「多段ssh」や、gateway serverから隔離ホストへ「tunneling」を行う必要が発生する。
 
-\section{sshportal}
+\section{sshportal}\label{sshportal}
 
 \subsection*{概要}
 ``sshportal(https://github.com/moul/sshportal)"とは、透過的なSSH要塞サーバーにするソフトウェアである。
@@ -1013,7 +1020,8 @@ sshportalはユーザの管理が簡単に行えるように設計されてお�
     \includegraphics*[width=1.0\textwidth,page=5]{graphs/telework_list.pdf}
     \label{daikibo}
 \end{table}
-\section{teleport}
+
+\section{Teleport}\label{teleport}s
 
 \subsection*{概要}
 Teleport(https://github.com/gravitational/teleport)は、リモートアクセスのためのセキュリティGatewayとなっている
@@ -1036,11 +1044,9 @@ SSHまたはKubernetes APIを介してlinuxサーバのクラスターへのア�
 \begin{figure}[H]
     \centering
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/teleport_archtecture.pdf}
-    \caption{teleportのアーキテクチャ}
+    \caption{Teleportのアーキテクチャ}
     \label{teleport_archtecture}
 \end{figure}
-\section{teleport}
-
 
 
 \subsubsection*{Teleportの構成要素}
@@ -1173,7 +1179,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
 
 
 
-\section{SoftEther VPN}
+\section{SoftEther VPN}\label{SoftEtherVPN}
 
 \subsubsection*{SoftEther VPNとは}
 
@@ -1425,7 +1431,8 @@ VPN Serverでの設定でパスワード認証を設定したため、VPN Client
     \setlength{\parskip}{0.0cm} % 段落間
     \setlength{\itemsep}{0.0cm} 
     \item[VPN Client\textgreater] accountconnect subtheme（使用する接続設定を指定）\\ 
-    \item[\$] sudo ipconfig set tap0 dhcp \\(ここからvpncmdを抜けて、コマンドラインで行う。このtap0とは接続設定で使用したNICと同じMACアドレスを持つものを指定する)
+    \item[\$] sudo ipconfig set tap0 dhcp \\(ここからvpncmdを抜けて、コマンドラインで行う。このtap0とは接続設定で
+    使用したNICと同じMACアドレスを持つものを指定する)
     \item[\$] ifconfig tap0 \\
     \begin{figure}[H]
         \centering
@@ -1477,10 +1484,162 @@ SoftEtherVPNは、GatewayServer、利用するClient、のそれぞれに対応�
 これにより個人的に利用する場合はGatewayServerを各自DHCPサーバ化する必要がある。サーバ等の知識が必要がなってくる。
 
 
+
+
+
+\chapter{通信制御の考察（仮）}
+
+
+本論文では、前章までにかけて通信制御や遠隔アクセスを容易にするアプリケーションを試用してきた。
+この章では、通信接続やその接続の管理を容易にするために必要な要素を考える。
+
+自分が考えるものを以下に挙げる。
+
+\begin{itemize}
+    \item SSHを行う回数（段数）を減らすこと。
+    \item SSHの際のトンネルを作る、管理できる。%トンネリング
+    \item 利用端末と遠隔アクセス端末側のみアカウントがあれば利用できる。%VPN
+    \item ユーザ情報の一括管理が行える。%LDAP,Kerberos
+    \item 一括管理に加えて、登録の自動化を行える。
+    \item 接続ログやセッションログが取れたら良い
+    \item ログイン時に入力の手間を省きたい。%証明書
+\end{itemize}
+
+\subsubsection*{SSHの段数を減らす}
+------------------------------VPNの図を挿入したい。----------------------\\
+
+
+システム管理者やユーザにとって、外部から隔離ネットワーク内のサーバにアクセスする際に最も煩わしく感じる場面は、
+いくつものGatewayを経由して、多段SSHしながら目的のサーバに接続を行う作業であろう。
+ホスト名とユーザ名を指定して何度もアカウント情報とコマンドを入力するのは大変面倒なことである。
+このような場面で必要となる最も代表的な技術は\ref{aboutVPN}節で説明した「VPN」である。
+VPNを設定することで、利用する端末と接続先の端末の存在するネットワーク間で仮想的なネットワークを引くことができ、
+殆どの場合一度の「SSH」コマンドで目的を達成できる。
+\par 本論文で試用したソフトウェアで同様のことができるものは、以下の２つである。
+\begin{itemize}
+    \item sshuttle (\ref{sshuttle}節)
+    \item SoftEtherVPN (\ref{SoftEtherVPN}節)
+\end{itemize}\par
+「sshuttle」は、遠隔アクセスを行う端末にインストールするだけで、sshuttleコマンドと引数に
+Gatewayのホスト名かIPアドレスと隔離ネットワークのサブネットを
+指定することで
+隔離ネットワークに対して簡易的なVPNを形成してくれるソフトウェアである。
+
+「SoftEtherVPN」は、遠隔アクセス端末と接続先端末の両方に対応したコンポーネントを適用することで、
+レイヤ２でのVPNを実現するソフトウェアである。SoftEtherを利用することで実際に隔離ネットワーク内のIPアドレスを
+割り当ててもらうことができ、実際のEthernetに接続されているように実感することができる。
+\par 
+「VPN」によって、接続先サーバと仮想的に同じネットワークに所属させることでSSHの回数を減らす方法の他に、
+\ref{Tunnel}節で説明したように「トンネリング」よって回数を減らすこともできる。
+隔離サーバとGateway間、利用端末とGatway間にトンネルを引くことで少ない段数でSSH接続を完了することができる。
+今回試用したソフトウェアの中では、「Teleport」はトンネリングを行っている。「Teleport」では、認証を行ったあと隔離サーバとGateway
+間でトンネルが引かれている。
+
+\par 本論文で試用したソフトウェアで同様のことができるものは、以下の４つである。
+\begin{itemize}
+    \item sshuttle
+    \item sshportal
+    \item Teleport
+\end{itemize}
+
+\subsubsection*{トンネルの管理}
+
+
+\if0
+sshの回数
+パスワード認証でなく、
+公開鍵を接続先に登録することでコマンド入力の煩わしさが減る。
+公開鍵認証を行うようにすると良いかも
+これを達成するための技術はVPN、やトンネルを作成する。
+\fi
+
+\subsubsection{ユーザの情報の一括管理}
+システム管理者にとって最も面倒な作業だと感じる瞬間は、一括管理されていないPCやサーバに新規ユーザ登録の時であろう。
+一括管理されていないために、1台1台にroot権限で入ったのち新規ユーザの登録を行わなければならない。
+そして、ユーザからすれば常に同じPCのところに赴きログインしなければいけなくなる。
+なぜなら、異なるPCだとアカウント情報が登録されてないからである。
+
+
+今PC・サーバ利用の例を出したが、ネットワーク接続利用の場合も似たようなことがいえる。
+ネットワークのログイン情報が一括管理されていない場合は、 ユーザは学内や社内のネットワークに接続する際に、
+アカウントが登録されている無線機器、有線機器にしか接続できなくなってしまう。
+
+これらの場面で必要になる技術は、\ref{Authentication}章の中で解説した、「LDAP」や「Kerberos」、「RADIUS」である。
+「LDAP」、「Kerberos」を利用することで、PC・サーバのアカウント情報を一括管理することができる。
+これにより、管理者はLDAPサーバ、KDCサーバにユーザ情報を登録するだけで、範囲内のPC・サーバにログイン情報を適用
+させることができ、ユーザはどのPCからでもログインすることができる。
+また、ネットワーク接続においては、「RADIUS」を利用することでネットワークログイン情報を一括管理でき、
+ユーザはどの無線機器、有線機器からもネットワークに接続することができる。
+加えて、「LDAP」と「RADIUS」を連携させることで、PCのアカウント情報をネットワークアカウント情報と兼ねることができる。
+
+\par 本論文で試用したソフトウェアで同様のことができるものは、以下の４つである。
+\begin{itemize}
+    \item sshportal (\ref{sshportal}節)
+    \item Active Directory (\ref{Active Directory}節)
+    \item Teleport (\ref{teleport}節)
+    \item SoftEtherVPN (\ref{SoftEtherVPN}節)
+\end{itemize}
+
+「sshportal」は、「LDAP」等の技術を利用していないがデータベースにアカウント情報を登録することでユーザのログイン
+認証を行っている。開発者によると、sshportal v2においてLDAPなどの認証技術を利用できるようにするようである。
+
+「Active Directory」では、ディレクトリーサービスの実現に「LDAP」、ユーザ認証の実現に「Kerberos」の技術を用いている。
+「Teleport」、「SoftEtherVPN」では、オプションとして「Active Directory」や「RADIUS」と連携できるようになっている。
+
+\subsubsection*{一括管理における登録の自動化}
+上述のアカウント情報の一括管理に加えて、情報の登録作業を自動化できるのならば、管理者にとってとても便利なことであろう。
+管理者が何十人、何百人もの情報を登録しなければならない状況であった時、
+1人1人手打ち入力で登録していくのはとても面倒な作業であろう。
+\par そういう場合の「技術」というものは見つからなかった。
+調べた中にあったものは、シェルスクリプトを用いて一度に行うものや、エクセルを用いてできるだけ入力作業を減らす
+テクニックは存在した。
+
+\subsubsection*{接続ログやセッションログの取得}
+管理者にとって、外部から隔離ネットワークに接続してくるユーザのアクセスログを取得できることは、
+セキュリティの向上につなげることができる。
+
+\par 本論文で試用したソフトウェアで同様のことができるものは、以下の3つである。
+\begin{itemize}
+    \item sshportal (\ref{sshportal}節)
+    \item Teleport (\ref{teleport}節)
+    \item SoftEtherVPN (\ref{SoftEtherVPN}節)
+\end{itemize}
+
+
+\subsubsection*{ログイン時に入力の手間}
+
+
+\subsubsection*{利用端末と遠隔アクセス}
+
+
+
+また、その情報の登録自体も容易にできたら良い。
+
+VPNによって、利用端末と遠隔の端末だけアカンウトがあればログインできる。
+
+GatewayServerを中継している、接続ログが取れたら良い。
+
+利用期限によって、パスワード管理など安全性を高めたい。（二週間程度ならそこまでセキュリティ高くなくてもよい）
+（1年以上などの場合は高いセキュリティが欲しい。）
+
+台数（手間と時間のバランス）
+
+ネットワークを伸ばすトンネルを作る、トンネル管理、
+
+パスワード、などあまり打つ必要がない方が嬉しい。
+
+
+
+
+
+
+
+
+
 \chapter{まとめ}
 本論文で前章までで、遠隔アクセスのために使われる技術とそのセキュリティ性向上のために使われている技術を解説し、
 その後それらの技術を用いているいくつかのオープンソースソフトウェアを試用してきた。ここでは全体の総括とまとめを行う。
-
+\if0
 \subsubsection*{遠隔アクセス技術}
 遠隔アクセス技術では、「SSH」と「VPN」を中心に解説してきた。
 ここで簡単に、２つの評価をする。
@@ -1489,7 +1648,7 @@ SSHはアプリケーション層で、VPNはトランスポート層で動作�
 VPNなしのSSHだけの使用であると、SSHの通常使用では単一のサーバにしかアクセスできないため、Gateway
 をくぐり抜けて内部リソースにアクセスするために何度もSSHを行う多段SSHやトンネリングをする必要がある。
 多段SSHの場合は何度も
-コマンドを入力し、認証をしてもらうという煩わしさが存在するし、作成したトンネルの管理等が問題になってくる。
+コマンドを入力し、認証をしてもらうという煩わしさが存在することに加え、作成したトンネルの管理等が問題になってくる。
 一方で、VPNを加えて利用することにより、社内ネットワークと外部とで仮想ネットワークを構築することで、
 ほとんどの場合一度のSSHやTelnetの利用で社内リソースにアクセスすることができる。
 利用に関しては、
@@ -1499,7 +1658,7 @@ VPNの場合は社内ネットワークへの入り口サーバ（Gateway）にV
 そのため、用途としては
 個人の利用において自宅サーバへのアクセス等の小規模ネットワークにはSSHのみで十分であり、
 より大規模ネットワークである社内ネットへのアクセスにはVPNとSSHを併用するのが最善であると考える。
-
+\fi
 %\subsubsection*{認証技術}
 %ここでは、代表的な認証技術として「LDAP」、「Kerberos」、「Radius」、「Active Directory」を解説した。\par
 %「LDAP」は、
