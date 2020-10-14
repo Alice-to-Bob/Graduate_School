@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{covid_nikkei}
 日経新聞, 2020/7/26.
@@ -32,5 +32,31 @@ K.~Hamzeh, G.~Pall, W.~Verthein, J.~Taarud, W.~Little, and G.~Zorn.
 W.~Townsley, A.~Valencia, A.~Rubens, G.~Pall, G.~Zorn, and B.~Palter.
 \newblock {Layer Two Tunneling Protocol "L2TP", RFC2661}.
 \newblock August 1999.
+
+\bibitem{RFC97}
+J.T. Melvin and R.W. Watson.
+\newblock {First Cut at a Proposed Telnet Protocol, RFC97}.
+\newblock February 1971.
+
+\bibitem{RFC4253}
+T.~Ylonen, C.~Lonvick, and Ed.
+\newblock {The Secure Shell (SSH) Transport Layer Protocol, RFC4253}.
+\newblock January 2006.
+
+\bibitem{RFC4511}
+J.~Sermersheim and Ed.
+\newblock {Lightweight Directory Access Protocol (LDAP): The Protocol,
+  RFC4511}.
+\newblock June 2006.
+
+\bibitem{RFC4120}
+C.~Neuman, T.~Yu, S.~Hartman, and K.~Raeburn.
+\newblock {The Kerberos Network Authentication Service (V5), RFC4120}.
+\newblock July 2005.
+
+\bibitem{RFC2865}
+C.~Rigney, S.~Willens, A.~Rubens, and W.~Simpson.
+\newblock {Remote Authentication Dial In User Service (RADIUS), RFC2865}.
+\newblock June 2000.
 
 \end{thebibliography}

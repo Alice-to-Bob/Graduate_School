@@ -11,36 +11,41 @@ Warning--empty journal in RFC2406
 Warning--empty journal in RFC2409
 Warning--empty journal in RFC2637
 Warning--empty journal in RFC2661
-You've used 7 entries,
+Warning--empty journal in RFC97
+Warning--empty journal in RFC4253
+Warning--empty journal in RFC4511
+Warning--empty journal in RFC4120
+Warning--empty journal in RFC2865
+You've used 12 entries,
             2270 wiz_defined-function locations,
-            568 strings with 4741 characters,
-and the built_in function-call counts, 1433 in all, are:
-= -- 77
-> -- 64
+            592 strings with 5302 characters,
+and the built_in function-call counts, 2485 in all, are:
+= -- 137
+> -- 114
 < -- 0
-+ -- 26
-- -- 19
-* -- 61
-:= -- 200
-add.period$ -- 19
-call.type$ -- 7
-change.case$ -- 6
++ -- 46
+- -- 34
+* -- 106
+:= -- 352
+add.period$ -- 34
+call.type$ -- 12
+change.case$ -- 11
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 90
-empty$ -- 145
-format.name$ -- 38
-if$ -- 327
+cite$ -- 24
+duplicate$ -- 155
+empty$ -- 245
+format.name$ -- 68
+if$ -- 567
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 6
-newline$ -- 36
-num.names$ -- 6
-pop$ -- 61
+int.to.str$ -- 12
+missing$ -- 11
+newline$ -- 61
+num.names$ -- 11
+pop$ -- 101
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 71
+skip$ -- 120
 stack$ -- 0
 substring$ -- 0
 swap$ -- 1
@@ -48,9 +53,9 @@ text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 7
-while$ -- 6
-width$ -- 8
-write$ -- 63
-is.kanji.str$ -- 67
-(There were 7 warnings)
+warning$ -- 12
+while$ -- 11
+width$ -- 14
+write$ -- 108
+is.kanji.str$ -- 117
+(There were 12 warnings)

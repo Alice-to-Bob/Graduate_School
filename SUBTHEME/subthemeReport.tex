@@ -12,6 +12,8 @@
 
 \usepackage{url}
 \usepackage{listings,jvlisting}
+
+\renewcommand{\bibname}{参考文献}
 \lstset{
     basicstyle={\ttfamily\small}, %書体の指定
     frame=tRBl, %フレームの指定
@@ -75,7 +77,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 そのような通信制御のアプリケーションなしでは、システム管理者はユーザーの接続ごとに手動でコマンドを実行しなければならず、サーバー
 を利用するユーザーが多くなるに従いシステム管理者への負担が多くなってしまう。\par
 令和２年現在新型コロナウィルス感染症の世界的大流行により在宅勤務(テレワーク)が推奨され、
-自宅から社内サーバーへのアクセスを余儀なくされている。そして、同年7月下旬に政府が在宅勤務７割を企業に要請した\cite{covid_nikkei}
+自宅から社内サーバーへのアクセスを余儀なくされている。そして、同年7月下旬に政府が在宅勤務７割を企業に要請した \cite{covid_nikkei}
 ことにより、今後ますますテレワークの人口が増大していきそれに伴い、大規模なリモートアクセスにおけるセキュリティがより重要になり、
 社内のシステム管理者の負担がますます増加していくことが予想できる。\par 
 
@@ -94,7 +96,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 %その中で小規模と大規模アプリケーションいうように分類し検討を行う。
 
 
-総務省テレワークセキュリティガイドライン\cite{telework_guideline}には、テレワークの利用方法が6パターンに分類されており、それとともに
+総務省テレワークセキュリティガイドライン \cite{telework_guideline}には、テレワークの利用方法が6パターンに分類されており、それとともに
 対策すべき観点もまとめられている。それを以下の表\ref{telework_table}に示す。
 下表\ref{telework_table}によると6パターンのうち1、2、6の3パターンが外部から社内サーバにアクセスを必要とする「オンプレミス型」のもので、
 3、4、5の3パターンはインターネット上のクラウドサービスを利用している「オフプレミス型」である。
@@ -163,7 +165,7 @@ AとBで共通の鍵を使用して、暗号化と復号化を行う。
 
 共通鍵暗号方式は、後述の公開鍵暗号方式に比べて、演算の処理量が少ないとういう利点ある。
 そのため、SSHプロトコルでは、通信内容の
-暗号化にはこの共通鍵暗号方式を採用している。\\
+暗号化にはこの共通鍵暗号方式を採用している。
 
 代表的な暗号化アルゴリズムに「AES」が存在する。
 
@@ -253,14 +255,14 @@ IPSec（IP Security Architecture）は、IPパケットのデータの完全性(
 
 \begin{itemize}
     \item AH（Authentication Header）\mbox{}\par
-    パケットが改ざんされていないかどうか認証を行うが、パケットの暗号化はできない。\\RFC2402\cite{RFC2402}で定義されている
+    パケットが改ざんされていないかどうか認証を行うが、パケットの暗号化はできない。\\RFC2402 \cite{RFC2402}で定義されている
 
     \item ESP(Encapsulated Security Payload)\mbox{}\\
     パケットが改ざんされていないかどうか認証を行い、
-    パケットのペイロード部の暗号化(DES or 3DES or AES)を行う。\\RFC2406\cite{RFC2406}で定義されている。 
+    パケットのペイロード部の暗号化(DES or 3DES or AES)を行う。\\RFC2406 \cite{RFC2406}で定義されている。 
     \item IKE(Inernet Key Exchange)\mbox{}\\
     秘密鍵情報の交換を安全に行う。(Difiie-Hellman鍵共有などを用いる)
-    \\RFC2409\cite{RFC2409}で定義されている。
+    \\RFC2409 \cite{RFC2409}で定義されている。
 \end{itemize}
 
 %\subsubsection*{IPSecの動作}
@@ -296,6 +298,8 @@ PPTP（Point-to-Point Tunneling Protocol）\cite{RFC2637}はデータリンク�
 \subsubsection*{PPTPの通信手順}
 以下にPPTPの通信手順を簡単に説明する。
 \begin{enumerate}
+    \setlength{\parskip}{0.05cm} % 段落間
+    \setlength{\itemsep}{0.05cm}
     \item 制御用コネクションの確立(PPTPトンネルのための準備)\mbox{}\\
     トンネルの構築、維持、切断処理のための制御情報をやり取りするために、トンネル以外に制御用
     情報の交換のためのコネクションを確立している。制御コネクションにはTCPを利用している。
@@ -314,6 +318,8 @@ L2TPはIPSecとは異なり、実装次第でトンネルするネットワー�
 \subsubsection*{L2TPの通信手順}
 L2TPでは以下のような手順で通信経路の確立を行う。
 \begin{enumerate}
+    \setlength{\parskip}{0.05cm} % 段落間
+    \setlength{\itemsep}{0.05cm}
     \item 初めに制御コネクションを確立してトンネルを構築する。
     \item その後同じトンネルを使ってユーザセッションを確立する。
     \item 最後にPPPによるリンクを確立する。
@@ -321,7 +327,7 @@ L2TPでは以下のような手順で通信経路の確立を行う。
 
 
 \section{Telnet}
-Telnetは、ネットワークに接続された機器を遠隔操作するために使用するアプリケーション層の技術である。
+Telnet \cite{RFC97}は、ネットワークに接続された機器を遠隔操作するために使用するアプリケーション層の技術である。
 サーバ・クライアント方式で提供され、Telnetサーバが操作される側、クライアントが操作する側で動作する。
 Telnetを使うことでオフィスのデスクにいながら、マシンルームにあるサーバ、ルータ等の機器をパソコン上で操作できる。
 PCにはtelnetクライアント、ルータなどの機器にはtelnetサーバーのサービスが有効であることが前提である。
@@ -348,7 +354,7 @@ Telnetで遠隔操作を行うためには対象の機器にログインする�
 \section{SSH}
 上記のTelnet は、遠隔操作するサーバーの認証情報を含め、通信を暗号化せずに平文のまま通信を行う。その結果、通信内容を盗聴されると
 認証情報や通信内容が簡単に盗まれてしまう危険性がある。
-この問題を解決してくれるのが、Telnetと同様な機能を持ちかつ通信内容を暗号化してくれる「SSH」（Secure SHell)である。
+この問題を解決してくれるのが、Telnetと同様な機能を持ちかつ通信内容を暗号化してくれる「SSH」（Secure SHell) \cite{RFC4253}である。
 SSHには「SSHv1」と「SSHv2」の二種類のバージョンが存在し、本論文では安全性の高い「SSHv2」のみの解説を行う。
 
 \begin{figure}[h]
@@ -415,6 +421,8 @@ SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイル�
 
 
 \begin{enumerate}[(a)]
+    \setlength{\parskip}{0.05cm} % 段落間
+    \setlength{\itemsep}{0.05cm}
     \item バージョンと各種暗号方式の交換\mbox{}\\ \ 最初、サーバとクライアントの間でSSHバージョン文字列を交換し、
     SSHv1で接続するか、SSHv2で接続するかを決定する。
     サーバとクライアントの間で、使用できる鍵交換方式、希望する公開鍵暗号方式、共通鍵暗号方式、メッセージ認証コード、のアルゴリズムの
@@ -428,6 +436,8 @@ SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイル�
     ここで、Diffi-Hellman鍵交換方式は、交換する鍵を直接送ることなく、両者で鍵を共有できるアルゴリズムである。
     \item ユーザ認証\mbox{}\\ホスト認証後、暗号化通信路が確立されると、公開鍵暗号方式またはローカルパスワードによるユーザ認証を行う。
     \begin{enumerate}[(1)]
+        \setlength{\parskip}{0.05cm} % 段落間
+        \setlength{\itemsep}{0.05cm}
         \item 公開鍵暗号方式によるユーザ認証\mbox{}\\ \ \ 遠隔サーバにはあらかじめユーザの公開鍵を登録しておく。クライアントでは、
         登録されているユーザ公開鍵に対応した、ユーザが所持している秘密鍵を使用して認証する。
         SSHv2では、「電子署名」という方法を使用する。\\
@@ -561,11 +571,11 @@ SSLで暗号化される。仮想NICのIPアドレスは、通常SSL-VPN接続�
 
 
 \chapter{認証技術}\label{Authentication}
-ここでは認証技術として代表的な技術である、「LDAP」、「Kerberos」、「Radius」、「Active Directory」の解説を行う。
+ここでは認証技術として代表的な技術である、「LDAP」、「Kerberos」、「RADIUS」、「Active Directory」の解説を行う。
 
 \section{LDAP}
 \subsubsection*{概要}
-LDAP(Lightweight Directory Access Protocol)は、Active Directoryのようなディレクトリサービスにアクセスするためのプロトコルである。
+LDAP(Lightweight Directory Access Protocol) \cite{RFC4511}は、Active Directoryのようなディレクトリサービスにアクセスするためのプロトコルである。
 %ディレクトリサービスというユーザやコンピュータといった情報を管理するサービス
 LDAP自体はプロトコルであり、サービスやシステムを指すものではない。
 LDAP認証は、ユーザの名前とパスワードの組み合わせの検証にのみ使用される。そのため、LDAPを試用して認証を行うようにする前に、ユーザ情報
@@ -610,6 +620,8 @@ LDAPを用いたデータの集中管理の様子を下図\ref{LDAP_data_manage}
 
 \subsubsection*{LDAPできること}
 \begin{enumerate}
+    \setlength{\parskip}{0.05cm} % 段落間
+    \setlength{\itemsep}{0.05cm}
     \item リソースの一元管理\mbox{}\\多数のクライアントがある場合、１台１台にIDパスワード情報を入れることなく、LDAPサーバー１台
 だけ登録すれば、どのクライアントからも同じIDパスワードでログインできるようになり、さらに環境もログイン時に取得できるようになる。
 
@@ -631,7 +643,7 @@ LDAPを用いたデータの集中管理の様子を下図\ref{LDAP_data_manage}
 \fi
 
 \subsubsection*{Kerberosとは}
-ネットワーク上でユーザの認証を行う方式の一つであり、サーバとクライアント間の身元確認のために使用される。
+Kerberos \cite{RFC4120}とは、ネットワーク上でユーザの認証を行う方式の一つであり、サーバとクライアント間の身元確認のために使用される。
 クライアント/サーバ間の通信を暗号化でき、比較的セキュリティが強固な認証方式となっている。
 ケルベロス認証では一度ログインすると、
 「チケット」と呼ばれるものを用いて認証を行えるようになるため、
@@ -674,40 +686,40 @@ Kerberos認証では、ユーザが正しいユーザIDとパスワードをAS\\
 \end{figure}\\
 Kerberos認証では、チケットの盗聴によるなりすましを防ぐために、時刻同期の仕組みが用意されている。
 チケットの中にはタイムスタンプ（送信時刻）が記録されており、チケットを受信したサーバがチケットのタイムスタンプとサーバの
-持つ時刻と5分以上のズレがあると認証に失敗するようにないっている。
+持つ時刻と5分以上のズレがあると認証に失敗するようになっている。
 したがって、NTP（Network Time Protocol）を使用して、チケット発行側の時刻とチケット利用側の時刻が同じにする必要がある。
+\clearpage
 
+\section{RADIUS}
 
-\section{Radius}
-
-\subsubsection*{Radiusとは}
-Radius(Remote Authentication Dial In User Service)は、ネットワーク上のユーザ認証プロトコルである。
+\subsubsection*{RADIUSとは}
+RADIUS(Remote Authentication Dial In User Service) \cite{RFC2865}は、ネットワーク上のユーザ認証プロトコルである。
 %無線LANや有線LANでのネットワーク接続時のユーザ認証のプロトコルとしても利用されている。
-Radiusによる認証システムは、「Radiusサーバ」、「Radiusクライアント」、「ユーザ」の３つの要素で構成されている。
+RADIUSによる認証システムは、「RADIUSサーバ」、「RADIUSクライアント」、「ユーザ」の３つの要素で構成されている。
 
 インターネットが普及を始めたころ、ユーザがインターネットへのアクセスするには電話世界線を使ったダイヤル
-アップが主流であった。Radiusサーバは、ダイヤルアップサービス用の認証サーバとして開発され、ISPや企業などで
-利用されてきた。現在回線は光回線になっているが、ISPの認証サービスなどでは、Radiusサーバが継続して
-使用されている。また、近年では、Wi-Fiアクセスポイントでの認証などでも、Radiusサーバが使われている。
+アップが主流であった。RADIUSサーバは、ダイヤルアップサービス用の認証サーバとして開発され、ISPや企業などで
+利用されてきた。現在回線は光回線になっているが、ISPの認証サービスなどでは、RADIUSサーバが継続して
+使用されている。また、近年では、Wi-Fiアクセスポイントでの認証などでも、RADIUSサーバが使われている。
 
 \begin{itemize}
     \setlength{\parskip}{0.05cm} % 段落間
     \setlength{\itemsep}{0.05cm} 
-    \item Radiusクライアント\mbox{}\\
-    アクセスしてくるユーザの認証要求を受け付けてRadiusサーバーにその情報を転送する役割。
+    \item RADIUSクライアント\mbox{}\\
+    アクセスしてくるユーザの認証要求を受け付けてRADIUSサーバーにその情報を転送する役割。
     NAS（Network Access Server）とも呼ばれる。
-    \item Radiusサーバ\mbox{}\\
+    \item RADIUSサーバ\mbox{}\\
     認証要求に応じて認証を実行してアクセスを許可するかどうかを決定する役割。
 \end{itemize}
 
-\subsubsection*{Radius認証の流れ}
+\subsubsection*{RADIUS認証の流れ}
 今回、ユーザがネットワークやネットワーク機器を利用したい場合、
-全体の認証の流れは下図\ref{Radius_Authentication}のようになっている。
+全体の認証の流れは下図\ref{RADIUS_Authentication}のようになっている。
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.9\textwidth, page=19]{graphs/network_archtecture.pdf}
-        \caption{Radius認証の流れ}
-        \label{Radius_Authentication}
+        \caption{RADIUS認証の流れ}
+        \label{RADIUS_Authentication}
     \end{center}
 \end{figure}
 \begin{enumerate}
@@ -715,11 +727,11 @@ Radiusによる認証システムは、「Radiusサーバ」、「Radiusクラ�
     \setlength{\itemsep}{0.1cm} 
 
     \item ユーザがネットワークに接続しようとする。
-    \item Radiusクライアントは、ユーザに認証を要求する
+    \item RADIUSクライアントは、ユーザに認証を要求する
     \item ユーザがユーザ名、パスワードを入力し、認証を行う。
-    \item Radiusクライアントは、受け取ったユーザ名、パスワードを使って、Radiusサーバにアクセス認証のRequestを出す。
-    \item Radiusサーバは認証処理を行い、Radiusクライアントに認証可否を伝える。
-    \item Radiusクライアントは、ユーザに認証結果を伝える。
+    \item RADIUSクライアントは、受け取ったユーザ名、パスワードを使って、RADIUSサーバにアクセス認証のRequestを出す。
+    \item RADIUSサーバは認証処理を行い、RADIUSクライアントに認証可否を伝える。
+    \item RADIUSクライアントは、ユーザに認証結果を伝える。
 
 \end{enumerate}
 
@@ -728,9 +740,9 @@ Radiusによる認証システムは、「Radiusサーバ」、「Radiusクラ�
 
 
 \if0
-PCからRadiusクライアントに送信されたユーザ名とパスワードは、RadiusクライアントからRadiusサーバへ"Access-Request"メッセージ
-として送信される。Radiusサーバは送信されてきた情報と、Radiusサーバが保持している情報とを照らし合わせて、正規
-ユーザかどうかを識別する。正規ユーザと判断されるとRadiusサーバは"Access-Request"メッセージでRadiusクライアントに伝えて、その情報が
+PCからRADIUSクライアントに送信されたユーザ名とパスワードは、RADIUSクライアントからRADIUSサーバへ"Access-Request"メッセージ
+として送信される。RADIUSサーバは送信されてきた情報と、RADIUSサーバが保持している情報とを照らし合わせて、正規
+ユーザかどうかを識別する。正規ユーザと判断されるとRADIUSサーバは"Access-Request"メッセージでRADIUSクライアントに伝えて、その情報が
 ユーザに伝えられる。
 \\
 \fi
@@ -751,6 +763,7 @@ Active Directoryとは簡単にいうと「Windowsシステムで認証を行う
 Active Directoryは５つのサービスから構成されている。
 
 \begin{itemize}
+
     \item  Active Directoryドメインサービス (AD DS)\mbox{}\\
     ユーザーやコンピュータの認証や、管理者が情報を安全管理したり、ユーザがファイルやディレクトリ などのリソースを
     簡単に検索することができる機能である。\\
@@ -830,6 +843,8 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 
 \if0
 \begin{itemize}
+    \setlength{\parskip}{0.05cm} % 段落間
+    \setlength{\itemsep}{0.05cm}
     \item HostServerとGatewayServer\mbox{}
     \begin{itemize}
         \item (メーカー)\mbox{}\\Supermicro
@@ -862,6 +877,8 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 
 
 \begin{itemize}
+    \setlength{\parskip}{0.05cm} % 段落間
+    \setlength{\itemsep}{0.05cm}
     \item 小規模アプリケーション\mbox{}\\
     上図\ref{network_graph}において、「GatewayServer」だけにインストールするもの、「Client」だけにインストールするもの
     と定義する。
@@ -1021,7 +1038,7 @@ sshportalはユーザの管理が簡単に行えるように設計されてお�
     \label{daikibo}
 \end{table}
 
-\section{Teleport}\label{teleport}s
+\section{Teleport}\label{teleport}
 
 \subsection*{概要}
 Teleport(https://github.com/gravitational/teleport)は、リモートアクセスのためのセキュリティGatewayとなっている
@@ -1032,6 +1049,8 @@ SSHまたはKubernetes APIを介してlinuxサーバのクラスターへのア�
 以下にTelportの機能の一部を示す。
 
 \begin{itemize}
+    \setlength{\parskip}{0.1cm} % 段落間
+    \setlength{\itemsep}{0.1cm}
     \item 単一のSSHアクセスGateway
     \item SSH証明書ベースの認証
     \item 二段階認証
@@ -1056,6 +1075,8 @@ Teleportの仕組みを解説する前に、用語の説明を行う。
     
         
 \begin{itemize}
+    \setlength{\parskip}{0.1cm} % 段落間
+    \setlength{\itemsep}{0.1cm}
     \item ノード\mbox{}\\「サーバ」または「コンピュータ」と同義語。SSH接続できるもの。
     \item ユーザ\mbox{}\\ノード上で一連の操作を実行できる人や、マシン。
     \item クラスター\mbox{}\\連携して動作するノードのグループであり、単一のシステムとみなすことができる。
@@ -1085,6 +1106,8 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
 下図の詳細なアーキテクチャを使って説明を行う。
 
 \begin{enumerate}[1:]
+    \setlength{\parskip}{0.1cm} % 段落間
+    \setlength{\itemsep}{0.1cm}
 
     \item クライアント接続を開始する\mbox{}\\クライアントは、CLIインターフェースやWebブラウザーを使用してプロキシ（Gateway）へSSH接続を始める。
     そのとき、クライアントは証明書を提供する。\\
@@ -1119,6 +1142,8 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     このステップで、プロキシーはクラスター内の要求されたノードを
     見つけようとする。プロキシがノードのIPアドレスを見つける検索メカニズムは３パターンある。
     \begin{enumerate}[(1)]
+        \setlength{\parskip}{0.1cm} % 段落間
+        \setlength{\itemsep}{0.1cm}
         \item DNSを使用して、クライアントから要求された名前解決を行う。
         \item 登録されているノードがあるかどうか認証サーバに尋ねる。
         \item 要求された名前と一致するラベルを持つノードを見つけるように認証サーバに要求する。
@@ -1157,6 +1182,19 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     
 \end{enumerate}
 
+
+\subsection*{Teleportの評価}
+Teleportは、ProxyServer(Gateway)、AuthServer、遠隔アクセス先端末のそれぞれに対応したソフトウェアをインストールし、設定を
+行う必要がある。
+Teleportでは、外部からProxyへのアクセスがあった際、接続者の持つSSH証明書をAuthServerが検証し、Authに登録された権限
+（管理者、アルバイト、開発者）に沿って、接続者が要求する隔離サーバへのTunnelを引いている。
+Teleportを利用することで、誰に対してどのサーバにどんな権限でアクセスさせたいかを統合管理でき、
+シェル内で入力されたコマンドは全て記録されるため、誰がいつ何をしたのかを動画として確認することができる。
+
+%また、Teleportでは、WebUIが提供されており、管理者としてログインすると、Proxyの配下にある隔離サーバへ
+
+
+%Telelportでは、AuthServerに登録されてる権限
 %\subsection*{使用方法}
 
 
@@ -1197,6 +1235,8 @@ SoftEtherVPNは様々な種類のVPNの利用パターンを想定している�
 その一部を以下に挙げる。
 
 \begin{itemize}
+    \setlength{\parskip}{0.05cm} % 段落間
+    \setlength{\itemsep}{0.05cm}
     \item 企業内におけるVPN
     \begin{itemize}
         \item PC間接続VPN
@@ -1462,7 +1502,7 @@ TLSにはOpenSSLを使用して、通信内容の暗号化にchacah20という�
 4096個
 ユーザ認証：
 パスワード認証
-Radius認証
+RADIUS認証
 Active Directory 認証
 固有証明書認証
 署名済み証明書認証
@@ -1554,7 +1594,7 @@ Gatewayのホスト名かIPアドレスと隔離ネットワークのサブネ�
     \item Teleport (\ref{teleport}節)
 \end{itemize}
 「Teleport」では、認証を行った後隔離サーバとGateway
-間でトンネルが引かれている。これらの他に、デフォルトのOpenSSHもトンネリングを行うことができる。
+間でトンネルが引かれている。これらの他に、OpenSSHもトンネリングを行うことができる。
 
 
 \subsubsection*{トンネルの管理の容易化}
@@ -1564,7 +1604,7 @@ Gatewayのホスト名かIPアドレスと隔離ネットワークのサブネ�
 また、システム管理者はGatewayを経由して引かれたトンネルを管理する必要がある。
 使われなくなったトンネルを切断したり、悪意のある使用がされていないか、誰が使用しているかなどを知る必要がある。
 
-今回試用したソフトウェアで「トンネルの管理」を実現するものは、
+今回試用したソフトウェアで「トンネルの管理を容易化」の機能に該当するものはなかった。
 
 
 \subsubsection*{ログイン時に入力の手間}
@@ -1689,9 +1729,9 @@ GatewayServerを中継している、接続ログが取れたら良い。
 調査した。
 インストールするソフトウェアは「Github」から、できるだけお気に入りやフォークが多いものを選んだ。
 研究開始時、お気に入り数が少ないものも選んでいたが、お気に入り数が少ないものは
-個人目的のために作られているためか、ソフトウェアの更新がだいぶ昔に止まっていたり、エラーの多いものや、
-インストール方法や設定が記されていないものがほとんどであったため、それらを除外し多くの人の目に止まっている
-ソフトウェアを選択した。
+個人目的のために作られているもの、ソフトウェアの更新がだいぶ昔に止まっているもの、エラーの多いものや、
+インストール方法や設定が記されていないものがほとんどであったため、結局それらお気に入り数の少ないものを除外し多くの
+人の目に止まっているソフトウェアを選択した。
 
 \if0
 Githubで通信制御のためのソフトウェアを検索する中で気になったことは、「ssh」や「VPN」に関するソフトウェアの作成者で
@@ -1699,10 +1739,11 @@ Githubで通信制御のためのソフトウェアを検索する中で気に�
 
 \fi
 
-前章の考察で羅列した求める機能を最も多く満たしていたソフトウェアは「Teleport」と「SoftEtherVPN」であった。
-これら２つは大規模ソフトウェアという、Gatewayやクライアントそれぞれに適した設定を行う必要があったため、
+前章の考察において羅列した、求める機能を最も多く満たしていたソフトウェアは「Teleport」と「SoftEtherVPN」であった。
+これら２つは大規模ソフトウェアという、Gatewayやクライアントそれぞれに適した設定を行う必要があり、導入難易度が
+比較的高いものであったため、それ相応の
 高い性能をもっていたと思われる。\par
-いくつかソフトウェアを試用する中で個人的にとても便利だと感じたのは、「sshuttle」、「SoftEtherVPN」である。
+いくつかソフトウェアを試用する中で個人的にとても便利だと感じたのは、「sshuttle」と「SoftEtherVPN」である。
 「sshuttle」は、簡易的なVPNを生成できるツールであるが、
 利用するには遠隔アクセスを行う端末側のみにインストールすればよく、Gatewayにsshuttle用の設定を行う必要が
 ないため、すぐに「sshuttle」の利便性を感じることができた。\par
@@ -1753,7 +1794,7 @@ VPNの場合は社内ネットワークへの入り口サーバ（Gateway）にV
 より大規模ネットワークである社内ネットへのアクセスにはVPNとSSHを併用するのが最善であると考える。
 \fi
 %\subsubsection*{認証技術}
-%ここでは、代表的な認証技術として「LDAP」、「Kerberos」、「Radius」、「Active Directory」を解説した。\par
+%ここでは、代表的な認証技術として「LDAP」、「Kerberos」、「RADIUS」、「Active Directory」を解説した。\par
 %「LDAP」は、
 
 \if0
