@@ -28,10 +28,20 @@ K.~Hamzeh, G.~Pall, W.~Verthein, J.~Taarud, W.~Little, and G.~Zorn.
 \newblock {Point-to-Point Tunneling Protocol (PPTP), RFC2637}.
 \newblock July 1999.
 
+\bibitem{RFC1661}
+W.~Simpson and Ed.
+\newblock {The Point-to-Point Protocol (PPP), RFC1661}.
+\newblock July 1994.
+
 \bibitem{RFC2661}
 W.~Townsley, A.~Valencia, A.~Rubens, G.~Pall, G.~Zorn, and B.~Palter.
 \newblock {Layer Two Tunneling Protocol "L2TP", RFC2661}.
 \newblock August 1999.
+
+\bibitem{RFC2341}
+A.~Valencia, M.~Littlewood, and T.~Kolar.
+\newblock {Cisco Layer Two Forwarding (Protocol) "L2F", RFC2341}.
+\newblock May 1998.
 
 \bibitem{RFC97}
 J.T. Melvin and R.W. Watson.
