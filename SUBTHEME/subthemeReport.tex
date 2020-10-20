@@ -32,7 +32,7 @@
 \title{副テーマ研究報告書 \\ 隔離ネットワークにおける通信制御の調査}
 
 
-\date{\today}\author{\\ \\ \\1910225 嶂南　秀敏\\ \\
+\date{\today}\author{\\ \\ \\ 1910225 嶂南　秀敏\\ \\
 \\ \vspace{1mm}副テーマ指導教員　知念　賢一　特任准教授
 \\ \vspace{1mm}主指導教員　藤崎　英一郎　教授}
 
@@ -57,9 +57,9 @@
     そのような通信制御のアプリケーションなしでは、システム管理者はユーザーの接続ごとに手動でコマンドを実行し
     管理しなければならず、サーバーを利用するユーザーが多くなるに従いシステム管理者への負担が多くなってしまう。
     \\
-    \ そこで、本研究ではサーバーへの通信制御に有効なアプリケーションを調査することを目的とし、三台のサーバーと
+    \ そこで、本研究ではサーバーへの通信制御に有効なアプリケーションを調査することを目的とし、3台のサーバーと
     一台のL2スイッチを用いて隔離ネットワークを構成し、ゲートウェイサーバーに個人のソースコード投稿サイトに公開されている
-    通信制御のアプリケーションを試用することで、通信制御の容易さ、通信の可視化度合い、セキュリティ、三点について検討を行う。
+    通信制御のアプリケーションを試用することで、通信制御の容易さ、通信の可視化度合い、セキュリティ、3点について検討を行う。
     
 \end{abstract}
 
@@ -161,7 +161,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 
 \subsection{共通鍵暗号方式}
 共通鍵暗号方式は、下図\ref{shared_key}のようにAとBで共通の鍵を使用して、暗号化と復号化を行う。
-安全にデータを暗号化するために、暗号化通信をする前に共通鍵を事前に秘密に共有する必要がある。
+安全にデータを暗号化するために、暗号化通信をする前に共通鍵(秘密鍵)を事前に秘密に共有する必要がある。
 
 共通鍵暗号方式は、後述の公開鍵暗号方式に比べて、演算の処理量が少ないとういう利点ある。
 そのため、SSHプロトコルやインターネット上での通信において、通信内容の
@@ -190,19 +190,29 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 \afterpage{\clearpage}
 \newpage
 \subsection{公開鍵暗号方式}
-公開鍵暗号方式は、二種類の鍵である公開鍵と秘密鍵をペアで使用する。この公開鍵と秘密鍵には次に示す性質があり、公開鍵暗号方式はこれら
+%共通鍵暗号方式においては、送信者と受信者が同じ共通鍵を共有しておく必要があった。
+%したがって、鍵を
+公開鍵暗号方式は、二種類の鍵である公開鍵と秘密鍵をペアで使用する。
+公開鍵は暗号化、秘密鍵は復号化の際に使用される。暗号鍵である公開鍵は公開され、
+復号鍵である秘密鍵は安全に保管する必要があり、秘密鍵は公開鍵から求めることはできない性質を持つ。
+こうすることで、誰もが暗号文を生成できるが、復号は秘密鍵を持つ人しかできないという状況が実現できる。
+\if0
+この公開鍵と秘密鍵には次に示す性質があり、公開鍵暗号方式はこれら
 の性質を利用して暗号化や署名を実現している。
+
 \begin{itemize}
     \item 公開鍵で暗号化した平文は、秘密鍵で復号できる
     \item 公開鍵で暗号化した平文は、公開鍵では復号できない
     \item 秘密鍵で暗号化したデータは、公開鍵で復号できる
     \item 公開鍵から秘密鍵を生成できない。
 \end{itemize}
+\fi
 
-公開鍵暗号方式での暗号化について上図\ref{public_key}に示す。この図では、鍵ペアを作成したBが、公開鍵をAに公開してる。Aは、Bの公開鍵を使用して
+ここで、公開鍵暗号方式での暗号化について上図\ref{public_key}に示す。この図では、鍵ペアを作成したBが、公開鍵をAに公開してる。Aは、Bの公開鍵を使用して
 平文を暗号化して、Bへ送付する。送付された暗号文はB自身の秘密鍵でのみ復号できる。
 
-
+SSHプロトコルやインターネット上での通信において、共通鍵暗号方式を利用するために、共通鍵を
+事前に公開鍵暗号方式を使って、２者間で共有している。
 代表的な暗号化アルゴリズムに「RSA暗号」「Diffi-Hellman鍵共有」等がある。
 
 \section{トンネリング(Tunneling)}\label{Tunnel}
@@ -329,7 +339,7 @@ L2TPでは以下のような手順で通信経路の確立を行う。
 
 \section{Telnet}
 Telnet \cite{RFC97}は、ネットワークに接続された機器を遠隔操作するために使用するアプリケーション層の技術である。
-サーバ・クライアント方式で提供され、Telnetサーバが操作される側、クライアントが操作する側で動作する。
+サーバ/クライアント方式で提供され、Telnetサーバが操作される側、クライアントが操作する側で動作する。
 Telnetを使うことでオフィスのデスクにいながら、マシンルームにあるサーバ、ルータ等の機器をパソコン上で操作できる。
 サーバにはtelnetクライアント、ルータなどの機器にはtelnetサーバーのサービスが有効であることが前提である。
 基本的にはポート番号23を使用する。
@@ -338,7 +348,7 @@ Telnetを使うことでオフィスのデスクにいながら、マシンル�
 \subsection{Telnetの仕組み、使用法}
 Telnetの接続までの流れは以下の図\ref{telnet_flow}のようになっている。
 クライアントからのTelnetはコマンドプロンプトやTerminalから、「telnet 150.65.136.94」というように
-telnetコマンドと接続したいサーバのIPアドレス
+Telnetコマンドと接続したいサーバのIPアドレス
 を入力するか、WindowsではTera Term等でIPアドレスと入力してTelnet接続を行う。
 TCPによるコネクション確立後クライアントのコマンドプロンプトでTelnetサーバから応答画面が表示される。
 Telnetで遠隔操作を行うためには対象の機器にログインする必要があるため、最初の応答画面ではパスワード要求がされる。
@@ -389,7 +399,7 @@ SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイル�
 
 %---------------メモ----------------
 \begin{enumerate}
-    \item セキュアリモートログイン\mbox{}\\通常、
+    \item セキュアリモートログイン(ssh)\mbox{}\\通常、
     Secure Shell（SSH）と呼ばれる機能のこと。セキュアリモートログインを使用すると、インターネット経由でも安全に、
     運用端末からSSHサーバーへログインできる。また、通信内容を他者に見られないため、安全な運用管理を実現できる。
     \\使用コマンド例   \$ ssh pc15@150.65.136.94
@@ -581,7 +591,7 @@ SSLで暗号化される。仮想NICのIPアドレスは、通常SSL-VPN接続�
 
 \section{LDAP}
 \subsubsection*{概要}
-LDAP(Lightweight Directory Access Protocol) \cite{RFC4511}は、Active Directoryのようなディレクトリサービスにアクセスするためのプロトコルである。
+LDAP (Lightweight Directory Access Protocol) \cite{RFC4511}は、Active Directoryのようなディレクトリサービスにアクセスするためのプロトコルである。
 %ディレクトリサービスというユーザやコンピュータといった情報を管理するサービス
 LDAP自体はプロトコルであり、サービスやシステムを指すものではない。
 LDAP認証は、ユーザの名前とパスワードの組み合わせの検証にのみ使用される。そのため、LDAPを利用して認証を行うようにする前に、ユーザ情報
@@ -678,7 +688,7 @@ Kerberosの仕組みを解説する前に、用語「KDC、AS、TGS、プリン�
     \end{center}
 \end{figure}\\
 \subsubsection*{Kerberosの認証の仕組み}
-Kerberos認証では、ユーザが正しいユーザIDとパスワードをAS\\(Authentication Server)に送信して認証に成功するとTGS(Ticket Granting server)から
+Kerberos認証では、ユーザが正しいユーザIDとパスワードをAS（Authentication Server）に送信して認証に成功するとTGS(Ticket Granting server)から
 チケットと呼ばれるデータを受け取れる。Kerberos認証ではこのチケットを認証に使用する。サーバはアクセスしてくるユーザがアクセス権を持っている
 かどうかをユーザIDとパスワードではなくチケット（クライアントID、タイムスタンプ、有効期限が記されている）を使用して確認する。
 認証時にチケットを使用することでアカウント（ユーザID、パスワード）の漏洩を防いでいる。全体的な流れを
@@ -700,7 +710,7 @@ Kerberos認証では、チケットの盗聴によるなりすましを防ぐた
 \section{RADIUS}
 
 \subsubsection*{RADIUSとは}
-RADIUS(Remote Authentication Dial In User Service) \cite{RFC2865}は、ネットワーク上のユーザ認証プロトコルである。
+RADIUS (Remote Authentication Dial In User Service) \cite{RFC2865}は、ネットワーク上のユーザ認証プロトコルである。
 %無線LANや有線LANでのネットワーク接続時のユーザ認証のプロトコルとしても利用されている。
 RADIUSによる認証システムは、「RADIUSサーバ」、「RADIUSクライアント」、「ユーザ」の３つの要素で構成されている。
 
@@ -782,7 +792,7 @@ Active Directoryは５つのサービスから構成されている。
     なったもの。認証を行う機能はない。
 
     \item Active Directory証明書サービス（AD CS）\mbox{}\\
-    公開鍵（PKI）を構築するための、証明書の作成と管理を行う証明機関(Certification Authority:CA)を作成するサービス。
+    公開鍵暗号基盤（PKI）を構築するための、証明書の作成と管理を行う証明機関 (Certification Authority:CA)を作成するサービス。
     
     \item Active Directory Rights Management Services (AD RMS)\mbox{}\\
     ドキュメントの権限管理やコンテンツ保護など、不正使用から情報を保護するための機能。
@@ -821,11 +831,11 @@ Active Directoryのメリットとしては、システム管理者はドメイ�
 
 
 \chapter{研究のためのネットワーク構成}
-本研究では、L2スイッチ1台とCentOS8.0のインストールされたサーバ3台を用いて1台をGateway Server、残りの
+本研究では、L2スイッチ 1台とCentOS8.0のインストールされたサーバ3台を用いて1台をGateway Server、残りの
 2台をHost Serverとすることで、
 以下図\ref{network_graph}のような隔離ネットワークを構成し、そのネットワーク内でソフトウェアを試用する。
 ここで隔離ネットワークとは、
-内部のHost Server2台はGatewayServerを経由しないと外部からは接続できないようになっているネットワークと定義する。
+内部のHost Server 2台はGatewayServerを経由しないと外部からは接続できないようになっているネットワークと定義する。
 L2スイッチの設定は、
 PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが通るようにし、PC7とPC8間は"ping"コマンドが通らないように設定した。
 
@@ -838,7 +848,7 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は"ping"コマンドが
 
 \subsubsection{使用機器の説明}
 ここでは、HostServer、GatewayServerとL2スイッチの使用機器の説明を行う。\par
-まず、HostServer2台とGatewayServer1台はそれぞれ同じ機器であり、計３台を使用している。
+まず、HostServer 2台とGatewayServer 1台はそれぞれ同じ機器であり、計３台を使用している。
 １台の詳細を下表\ref{server_detail}に記す。
 
 \begin{table}[H]
@@ -1049,7 +1059,7 @@ sshportalはユーザの管理が簡単に行えるように設計されてお�
 \section{Teleport}\label{teleport}
 
 \subsection*{概要}
-Teleport(https://github.com/gravitational/teleport)は、リモートアクセスのためのセキュリティGatewayとなっており、
+Teleport (https://github.com/gravitational/teleport)は、リモートアクセスのためのセキュリティGatewayとなっており、
 開発者によると、従来のOpenSShの代わりに使用されることを目的としているという。
 
 有料版と無料版があり、今回は無料版を使用した。
@@ -1192,10 +1202,10 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
 
 
 \subsection*{Teleportの評価}
-Teleportは、ProxyServer(Gateway)、AuthServer、遠隔アクセス先端末のそれぞれに対応したソフトウェアをインストールし、設定を
+Teleportは、ProxyServer (Gateway)、AuthServer、遠隔アクセス先端末のそれぞれに対応したソフトウェアをインストールし、設定を
 行う必要がある。
 Teleportでは、外部からProxyへのアクセスがあった際、接続者の持つSSH証明書をAuthServerが検証し、Authに登録された権限
-（管理者、アルバイト、開発者）に沿って、接続者が要求する隔離サーバへのTunnelを引いている。
+（管理者、アルバイト、開発者等）に沿って、接続者が要求する隔離サーバへのTunnelを引いている。
 Teleportを利用することで、誰に対してどのサーバにどんな権限でアクセスさせたいかを統合管理でき、
 シェル内で入力されたコマンドは全て記録されるため、誰がいつ何をしたのかを動画として確認することができる。
 
@@ -1312,7 +1322,7 @@ SoftEtherVPNには、「VPN Client」、「VPN Server」のそれぞれ別々の
 \end{figure}
 \subsubsection*{SoftEther VPN ServerのDHCP設定}
 ここでは、リモートアクセス型のSoftEtherVPNの利用にはDHCPサーバが必須であるため、
-上図\ref{softether}のVPNServer(Centos)をDHCPを行えるよう設定する。あらかじめ"SELinux"は無効化している。\par
+上図\ref{softether}のVPNServer (Centos)をDHCPを行えるよう設定する。あらかじめ"SELinux"は無効化している。\par
 まず、\$ sudo yum -y install dhcp でDHCPをインストールする。その後以下のようにDHCPサーバ設定ファイル(/etc/dhcp/dhcpd.conf)を作成した。
 ここでは、10.1.1.0/24でIPアドレスを自動で割り当ててくれるように記述した。
 \begin{lstlisting}
@@ -1399,7 +1409,7 @@ vpncmd起動後は、Helpを参照しながら必要に応じて拡張機能の�
 \begin{description}
     \setlength{\parskip}{0.0cm} % 段落間
     \setlength{\itemsep}{0.0cm} 
-    \item[VPN Server\textgreater] ServerPasswordSet\\(管理者パスワード設定)
+    \item[VPN Server\textgreater] ServerPasswordSet \\ (管理者パスワード設定)
     \item[VPN Server\textgreater] BridgeCreate \\(ローカルブリッジ接続を作成する)
     \item[VPN Server\textgreater] IPsecEnable \\(L2TP/IPSecサーバーを有効化する)
 
@@ -1626,9 +1636,9 @@ Gatewayのホスト名かIPアドレスと隔離ネットワークのサブネ�
 「接続先への段数を減らす」ことができたとしても、他のサーバアクセスや機器利用の際に再びパスワード等の情報を入力するのは
 大変面倒である。
 
-このような場面で必要となる技術はいくつかあるが、「Keroberos認証による、シングルサインオン(SSO)」や「SSH公開鍵認証の利用」、
+このような場面で必要となる技術はいくつかあるが、「Kerberos認証による、シングルサインオン(SSO)」や「SSH公開鍵認証の利用」、
 「SSH証明書認証の利用」である。
-\ref{KerberosAuthority}節で解説したように、Keroberos認証を用いることでシングルサインオン(SSO)を実現でき、一度のログインのみで
+\ref{KerberosAuthority}節で解説したように、Kerberos認証を用いることでシングルサインオン(SSO)を実現でき、一度のログインのみで
 範囲内のサーバや機器に自由にアクセスすることができる。他のテクニックとして、SSHにおいて公開鍵暗号を遠隔
 アクセス利用端末で作成し、接続先端末に登録しておけばアカウントを入力する手間を省くことができる。
 同様に、SSHで証明書認証を利用することで、SSHコマンドを入力すれば自動的にログインすることができる。
