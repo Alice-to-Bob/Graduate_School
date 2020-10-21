@@ -77,7 +77,7 @@ Microsoft.
 
 \bibitem{activedirectory}
 Microsoft.
-\newblock Active directory domain serviceの概要.
+\newblock Active {D}irectory {D}omain {S}erviceの概要.
 \newblock
   \url{https://docs.microsoft.com/ja-jp/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview}.
 
@@ -104,7 +104,7 @@ Manfred Touron.
 
 \bibitem{sshportalpage}
 Manfred Touron.
-\newblock sshportal - an opinionated ssh jump-host.
+\newblock sshportal - {A}n {O}pinionated {SSH} {J}ump-{H}ost.
 \newblock \url{https://manfred.life/sshportal-intro}.
 
 \bibitem{teleport}

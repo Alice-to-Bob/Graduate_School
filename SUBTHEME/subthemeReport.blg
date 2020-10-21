@@ -20,7 +20,7 @@ Warning--empty journal in RFC4120
 Warning--empty journal in RFC2865
 You've used 25 entries,
             2270 wiz_defined-function locations,
-            636 strings with 6639 characters,
+            636 strings with 6655 characters,
 and the built_in function-call counts, 4748 in all, are:
 = -- 271
 > -- 175
