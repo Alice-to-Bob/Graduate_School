@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  20 OCT 2020 16:48
+This is e-pTeX, Version 3.14159265-p3.8.1-180226-2.6 (utf8.euc) (TeX Live 2018) (preloaded format=platex 2019.1.25)  21 OCT 2020 14:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -156,11 +156,11 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 46.
  [1]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 66.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 60.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <20.74> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 66.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 60.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 66.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 60.
  (./subthemeReport.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 2.
@@ -177,11 +177,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [2]
 第 1 章
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 70.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 64.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 70.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 64.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 70.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 64.
 File: graphs/telework_list.pdf Graphic file (type pdf)
 <graphs/telework_list.pdf>
 [3
@@ -201,18 +201,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4] [5]
 第 2 章
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 156.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 150.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 156.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 150.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 162.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 156.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 162.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 156.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 162.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
  [6
 
 ]
@@ -319,17 +319,17 @@ File: graphs/telework_list.pdf Graphic file (type pdf)
 File: graphs/network_archtecture.pdf Graphic file (type pdf)
 <graphs/network_archtecture.pdf>
  [32]
-Overfull \hbox (1.28322pt too wide) in paragraph at lines 1003--1005
+Overfull \hbox (1.28322pt too wide) in paragraph at lines 999--1001
 []\OT1/ptm/m/n/10.95 podman run -p 2222:2222 -d --name=sshportal -v "$(pwd):$(pwd)" -w "$(pwd)" moul/ssh-
  []
 
 [33]
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 1006.
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 1002.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1006.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1002.
  [34]
 第 6 章
 File: graphs/telework_list.pdf Graphic file (type pdf)
@@ -362,7 +362,7 @@ File: graphs/softetherVPN.pdf Graphic file (type pdf)
 File: graphs/softetherVPN.pdf Graphic file (type pdf)
 <graphs/softetherVPN.pdf>
  (I search kanjifont definition file: . . ) (I search font definition file: . . . . . . . )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1328.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1326.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [44] [45]
@@ -372,12 +372,12 @@ File: graphs/serverlogin.png Graphic file (type bmp)
 
 LaTeX Font Warning: Font shape `OML/ptm/bx/n' undefined
 (Font)              using `OML/ptm/m/it' instead
-(Font)              for symbol `textgreater' on input line 1412.
+(Font)              for symbol `textgreater' on input line 1410.
 
 LaTeX Font Info:    Font shape `OML/ptm/m/it' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1412.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1410.
 LaTeX Font Info:    Font shape `OML/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1413.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1411.
 [46]
 File: graphs/clientconfig3.png Graphic file (type bmp)
 <graphs/clientconfig3.png>
@@ -409,9 +409,39 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 第 8 章
 (./subthemeReport.bbl [57
 
-]) [58
+]
+Underfull \hbox (badness 10000) in paragraph at lines 73--77
+[]\OT1/ptm/m/n/10.95 Microsoft.  Azure Ac-tive Di-rec-tory \JY1/mc/m/n/10.95 とは\OT1/ptm/m/n/10.95 .  $\OT1/pcr/m/n/10.95 https : / / docs .
+ []
 
-] (./subthemeReport.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--77
+\OT1/pcr/m/n/10.95 microsoft . com / ja-[]jp / azure / active-[]directory / fundamentals /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--83
+\OT1/pcr/m/n/10.95 com / ja-[]jp / windows-[]server / identity / ad-[]ds / get-[]started /
+ []
+
+[58
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 85--89
+[]\OT1/ptm/m/n/10.95 Microsoft.  Ac-tive Di-rec-tory Do-main Ser-vices.  $\OT1/pcr/m/n/10.95 https : / / docs .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--89
+\OT1/pcr/m/n/10.95 microsoft . com / ja-[]jp / windows-[]server / identity / ad-[]ds /
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 121--124
+[]\JY1/mc/m/n/10.95 筑波大学 \OT1/ptm/m/n/10.95 Soft-Ether \JY1/mc/m/n/10.95 プロジ ェ クト\OT1/ptm/m/n/10.95 .  Soft-Ether VPN.  $\OT1/pcr/m/n/10.95 https : / / github . com /
+ []
+
+) [59] (./subthemeReport.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -420,12 +450,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2861 strings out of 493226
- 39927 string characters out of 6144095
- 133481 words of memory out of 5000000
- 6788 multiletter control sequences out of 15000+600000
+ 2872 strings out of 493226
+ 40090 string characters out of 6144095
+ 133525 words of memory out of 5000000
+ 6799 multiletter control sequences out of 15000+600000
  19995 words of font info for 70 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  26i,7n,32p,287b,1093s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on subthemeReport.dvi (60 pages, 146832 bytes).
+Output written on subthemeReport.dvi (61 pages, 148880 bytes).
