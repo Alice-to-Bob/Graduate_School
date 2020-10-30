@@ -7,11 +7,10 @@
 \usepackage{here}
 \usepackage{enumerate}
 \usepackage{afterpage}
-
 \usepackage{times}
-
 \usepackage{url}
 \usepackage{listings,jvlisting}
+
 
 \renewcommand{\bibname}{参考文献}
 \lstset{
@@ -36,7 +35,6 @@
 \\ \vspace{1mm}副テーマ指導教員　知念　賢一　特任准教授
 \\ \vspace{1mm}主指導教員　藤崎　英一郎　教授}
 
-
 \begin{document}
 
 \maketitle
@@ -45,16 +43,24 @@
 
 \begin{abstract}
     
-    
     現在、ユーザの遠隔サーバへの利用を容易にするアプリケーションは多く存在する。
     その一方で、サーバーへの通信接続をシステム管理者が容易に制御管理するためのアプリケーションは少ない。
     そのような通信制御のアプリケーションなしでは、システム管理者はユーザーの接続ごとに手動でコマンドを実行し
     管理しなければならず、サーバーを利用するユーザーが多くなるに従いシステム管理者への負担が多くなってしまう。
-    \\
-    \ そこで、本研究ではサーバーへの通信制御に有効なアプリケーションを調査することを目的とし、3台のサーバーと
-    一台のL2スイッチを用いて隔離ネットワークを構成し、ゲートウェイサーバーに個人のソースコード投稿サイトに公開されている
-    通信制御のアプリケーションを試用することで、通信制御の容易さ、通信の可視化度合い、セキュリティ、3点について検討を行う。
     
+    また、令和２年新型コロナウィルスの拡大によりテレワークが普及し、遠隔地から社内ネットワークにアクセスすること
+    が多くなり、リモートアクセスにおけるセキュリティが重要になっている。
+
+
+    そこで、本研究ではリモートアクセスの根底にある技術を解説するとともに、    
+    サーバーへの通信制御に有効なアプリケーションを調査することを目的とする。
+    そのために、3台のサーバーと1台のL2スイッチを用いて隔離ネットワークを構成し、その３台のサーバーに
+    個人ソースコード投稿サイトに公開されている
+    通信制御のアプリケーションを試用し、評価を行う。 
+    
+    
+    %ゲートウェイサーバーに個人のソースコード投稿サイトに公開されている
+    %通信制御のアプリケーションを試用した後、検討を行う。
 \end{abstract}
 
 \tableofcontents
@@ -66,25 +72,13 @@
 Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)、Microsoftのクラウドサービス(Azure)などのように
 ユーザーの目的に合わせて、遠隔サーバーの利用を容易にするアプリケーションが多く存在する。
 
-
-
 しかし、一方でサーバーへの通信接続をシステム管理者が容易に制御管理するためのアプリケーションは少ない。
-そのような通信制御のアプリケーションなしでは、システム管理者はユーザーの接続ごとに手動でコマンドを実行しなければならず、サーバー
-を利用するユーザーが多くなるに従いシステム管理者への負担が多くなってしまう。\par
+そのような通信制御のアプリケーションなしでは、システム管理者はユーザーの接続ごとに手動でコマンドを実行しなければならず、
+サーバーを利用するユーザーが多くなるに従いシステム管理者への負担が多くなってしまう。\par
 令和２年現在新型コロナウィルス感染症の世界的大流行により在宅勤務(テレワーク)が推奨され、
 自宅から社内サーバーへのアクセスを余儀なくされている。そして、同年7月下旬に政府が在宅勤務７割を企業に要請した \cite{covid_nikkei}
 ことにより、今後ますますテレワークの人口が増大していきそれに伴い、大規模なリモートアクセスにおけるセキュリティがより重要になり、
 社内のシステム管理者の負担がますます増加していくことが予想できる。\par 
-
-
-%ここで現在の課題や実社会でのネットワーク構成やアクセス図、セキュリティの問題点などを記す。
-
-
-%社内システム管理者はテレワークによる社外ネットワークからの大規模アクセスのためにも、自社のネットワーク構成を
-%見直す必要があるかもしれない。
-%\\\\
-%また、アプリケーションの適応先で小規模、大規模専用のものと分類し、その中で使われている技術についても解説を行う。
-%\\\\
 
 \section{研究目的}
 %本研究では、図１のような隔離ネットワークを構成し、そこにソースコード投稿サイトに公開されている通信制御アプリケーションを試用し、
@@ -114,7 +108,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 %オープンソースとして公開しているものも存在する、
 
 
-\begin{table}[h]
+\begin{table}[tbp]
     \centering
     \caption{テレワークの6種類のパターン}
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/telework_list.pdf}
@@ -122,7 +116,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 \end{table}
 
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=0.9\textwidth,page=14]{graphs/network_archtecture.pdf}
     \caption{ オフプレミス型}
@@ -130,7 +124,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=0.9\textwidth,page=15]{graphs/network_archtecture.pdf}
     \caption{オンプレミス型}
@@ -154,7 +148,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 また、「暗号文」は「鍵」を使用して、「平文」に復号できる。
 
 \subsection{共通鍵暗号方式}
-共通鍵暗号方式は、下図\ref{shared_key}のようにAとBで共通の鍵を使用して、暗号化と復号化を行う。
+共通鍵暗号方式は、図\ref{shared_key}のようにAとBで共通の鍵を使用して、暗号化と復号化を行う。
 安全にデータを暗号化するために、暗号化通信をする前に共通鍵(秘密鍵)を事前に秘密に共有する必要がある。
 
 共通鍵暗号方式は、後述の公開鍵暗号方式に比べて、演算の処理量が少ないとういう利点ある。
@@ -166,14 +160,14 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 \afterpage{\clearpage}
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=0.9\textwidth, page=8]{graphs/network_archtecture.pdf}
     \caption{共通鍵暗号方式での暗号化}
     \label{shared_key}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=0.9\textwidth, page=9]{graphs/network_archtecture.pdf}
     \caption{公開鍵暗号方式での暗号化}
@@ -202,7 +196,7 @@ Googleのクラウドサービス(GCP)、Amazonのクラウドサービス(AWS)�
 \end{itemize}
 \fi
 
-ここで、公開鍵暗号方式での暗号化について上図\ref{public_key}に示す。この図では、鍵ペアを作成したBが、公開鍵をAに公開してる。Aは、Bの公開鍵を使用して
+ここで、公開鍵暗号方式での暗号化について図\ref{public_key}に示す。この図では、鍵ペアを作成したBが、公開鍵をAに公開してる。Aは、Bの公開鍵を使用して
 平文を暗号化して、Bへ送付する。送付された暗号文はB自身の秘密鍵でのみ復号できる。
 
 SSHプロトコルやインターネット上での通信において、共通鍵暗号方式を利用するために、共通鍵を
@@ -347,7 +341,7 @@ Telnetコマンドと接続したいサーバのIPアドレス
 TCPによるコネクション確立後クライアントのコマンドプロンプトでTelnetサーバから応答画面が表示される。
 Telnetで遠隔操作を行うためには対象の機器にログインする必要があるため、最初の応答画面ではパスワード要求がされる。
 
-\begin{figure}[H]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/network_archtecture.pdf}
     \caption{Telnet接続フロー}
@@ -363,13 +357,13 @@ Telnetで遠隔操作を行うためには対象の機器にログインする�
 この問題を解決してくれるのが、Telnetと同様な機能を持ちかつ通信内容を暗号化してくれる「SSH」（Secure SHell) \cite{RFC4253}である。
 SSHには「SSHv1」と「SSHv2」の二種類のバージョンが存在し、本論文では安全性の高い「SSHv2」のみの解説を行う。
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=3]{graphs/network_archtecture.pdf}
     \caption{telnet接続による脅威}
     \label{telnet_flow}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=4]{graphs/network_archtecture.pdf}
     \caption{SSH接続によるセキュアな運用管理}
@@ -418,8 +412,8 @@ SSHの公開鍵とユーザIDが"\textasciitilde/.ssh/known\_host''ファイル�
 
 \subsection{SSH接続までの流れ}
 
-まず初めに暗号化通信路の確立までの流れを下図\ref{SSH_flow}のように示す。
-\begin{figure}[h]
+まず初めに暗号化通信路の確立までの流れを図\ref{SSH_flow}のように示す。
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=5]{graphs/network_archtecture.pdf}
     \caption{SSH接続確立までのフロー}
@@ -476,7 +470,7 @@ VPNとは、「Virtual Private Network」の略であり、「仮想専用線」
 VPNを利用することで、公衆回線（インターネット）での脅威を防ぎ、安全なリモートアクセスを実現することができる。
 VPNの実現のための主な方法として、ここでは「IPSec-VPN」と「SSL-VPN」を挙げる。
 まず初めに下表\ref{IPsec_SSL_diference}に２つの違いを簡単にまとめ、その後各々の説明を行う。
-\begin{table}[h]
+\begin{table}[tbp]
     \centering
     \caption{IPSec-VPNとSSL-VPNの違い}
     \includegraphics[width=1.0\textwidth, page=2]{graphs/telework_list.pdf}
@@ -500,7 +494,7 @@ IPSec-VPNはクライアントPCに必ずVPNのクライアント用ソフトウ
 SSL-VPNには、「リバースプロキシ」、「ポートフォワーディング」、「L2フォワーディング」の３つの方式がある。
 まずはじめに３つの方式の比較を簡単に下表\ref{SSLVPN_impliment_table}に示した後、それぞれを簡潔に説明する。
 
-\begin{table}[h]
+\begin{table}[tbp]
     \centering
     \caption{SSL-VPNの実装方式の比較}
     \includegraphics[width=1.0\textwidth, page=3]{graphs/telework_list.pdf}
@@ -510,9 +504,9 @@ SSL-VPNには、「リバースプロキシ」、「ポートフォワーディ�
 \subsubsection*{SSL-VPN(リバースプロキシ方式)}
 
 「リバースプロキシ」は、通常のクライアント側（利用者側）の「プロキシ」ではなく、サーバー側（アクセスされる側）に
-位置するものである。簡単な構成を下図\ref{reverse_proxy}に示す。
+位置するものである。簡単な構成を図\ref{reverse_proxy}に示す。
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=16]{graphs/network_archtecture.pdf}
     \caption{リバースプロキシの図}
@@ -535,7 +529,7 @@ SSL-VPN Gateway（リバースプロキシ）が仲介者としてClientのReque
 一般的に上記のリバースプロキシ方式では、SSL-VPN Gatewayにファイアウォールを設置し、外部から利用できる
 アプリケーションを制御（Webサーバは閲覧できるが、Telnetはできないなど）している。その制御には、通信されるデータに含まれる、ポート番号と呼ばれるアプリケーション
 の種類を示す情報を使用している。
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=17]{graphs/network_archtecture.pdf}
     \caption{ポートフォワーディングの図}
@@ -546,7 +540,7 @@ SSL-VPN Gateway（リバースプロキシ）が仲介者としてClientのReque
 通過できるアプリケーションのポート番号に変換することにより、ローカルネットワークと
 グローバルネットワーク（インターネット）との通信を可能にする機能である。
 ポートフォワーディング方式では、この機能を用いて任意のアプリケーションの通信を
-上図\ref{portfowarding}のようにHTTPSのポート番号に
+図\ref{portfowarding}のようにHTTPSのポート番号に
 変換し、ファイアーウォールを通過させることでSSL-VPNを実現する。
 
 \subsubsection*{SSL-VPN(L2フォワーディング方式)}
@@ -561,7 +555,7 @@ L2フォワーディングでは、アプリケーションのデータをHTTP�
 SSLで暗号化される。仮想NICのIPアドレスは、通常SSL-VPN接続とともに自動設定される。そして、クライアントは仮想NICによって
 社内ネットワークに直接接続されているのと同等に扱うことができるようになる。
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=18]{graphs/network_archtecture.pdf}
     \caption{L2フォワーディングの図}
@@ -617,8 +611,8 @@ LDAPの特性としては、「情報の参照、検索」に特化している�
 大規模システムではユーザ情報の利用は参照検索が最も頻繁に起こるため、それらの操作に対する高い性能が必須であるため、
 このような特性となっている。
 
-LDAPを用いたデータの集中管理の様子を下図\ref{LDAP_data_manage}に示す。
-\begin{figure}[h]
+LDAPを用いたデータの集中管理の様子を図\ref{LDAP_data_manage}に示す。
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=10]{graphs/network_archtecture.pdf}
     \caption{LDAPを用いてデータを集中管理の図}
@@ -674,7 +668,7 @@ Kerberosの仕組みを解説する前に、用語「KDC、AS、TGS、プリン�
 \end{itemize}
 これらを構成すると以下の図\ref{KerberosCompornent}になる。
 %------------ここにkerberos の構成図を載っける。ここはKerberos認証のコンポーネント---------
-\begin{figure}[h]
+\begin{figure}[tbp]
     \begin{center}
         \includegraphics[width=1.0\textwidth, page=11]{graphs/network_archtecture.pdf}
         \caption{Kerberos認証の構成要素}
@@ -686,9 +680,9 @@ Kerberos認証では、ユーザが正しいユーザIDとパスワードをAS�
 チケットと呼ばれるデータを受け取れる。Kerberos認証ではこのチケットを認証に使用する。サーバはアクセスしてくるユーザがアクセス権を持っている
 かどうかをユーザIDとパスワードではなくチケット（クライアントID、タイムスタンプ、有効期限が記されている）を使用して確認する。
 認証時にチケットを使用することでアカウント（ユーザID、パスワード）の漏洩を防いでいる。全体的な流れを
-以下図\ref{KerberosAuthority}に示す。
+以図\ref{KerberosAuthority}に示す。
 %https://milestone-of-se.nesuke.com/sv-advanced/activedirectory/kerberos-spnego/
-\begin{figure}[h]
+\begin{figure}[tbp]
     \begin{flushleft}
         \includegraphics[width=1.0\textwidth, page=12]{graphs/network_archtecture.pdf}
         \caption{Kerberos認証流れ}
@@ -725,8 +719,8 @@ RADIUSによる認証システムは、「RADIUSサーバ」、「RADIUSクラ�
 
 \subsubsection*{RADIUS認証の流れ}
 ユーザがネットワークやネットワーク機器を利用したい場合、
-全体の認証の流れは下図\ref{RADIUS_Authentication}のようになっている。
-\begin{figure}[h]
+全体の認証の流れは図\ref{RADIUS_Authentication}のようになっている。
+\begin{figure}[tbp]
     \begin{center}
         \includegraphics[width=0.9\textwidth, page=19]{graphs/network_archtecture.pdf}
         \caption{RADIUS認証の流れ}
@@ -827,13 +821,13 @@ Active Directoryのメリットとしては、システム管理者はドメイ�
 \chapter{試用するネットワーク構成}
 本研究では、L2スイッチ 1台とCentOS8.0のインストールされたサーバ3台を用いて1台をGateway Server、残りの
 2台をHost Serverとすることで、
-以下図\ref{network_graph}のような隔離ネットワークを構成し、そのネットワーク内でソフトウェアを試用する。
+以図\ref{network_graph}のような隔離ネットワークを構成し、そのネットワーク内でソフトウェアを試用する。
 ここで隔離ネットワークとは、
 内部のHost Server 2台はGatewayServerを経由しないと外部からは接続できないようになっているネットワークと定義する。
 L2スイッチの設定は、
 PC7とGateway間、PC8とGateway間のそれぞれの間は接続可能とし、PC7とPC8間は接続不可能となるように設定した。
 
-\begin{figure}[H]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=1.0\textwidth,page=2]{graphs/network_archtecture.pdf}
     \caption{ネットワーク構成図}
@@ -845,7 +839,7 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は接続可能とし、
 まず、HostServer 2台とGatewayServer 1台はそれぞれ同じ機器であり、計３台を使用している。
 １台の詳細を下表\ref{server_detail}に記す。
 
-\begin{table}[H]
+\begin{table}[tbp]
     \centering
     \caption{サーバーの詳細}
     \includegraphics*[width=1.0\textwidth,page=6]{graphs/telework_list.pdf}
@@ -874,7 +868,7 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は接続可能とし、
 そして、次にL2スイッチのスペックの詳細を下表にまとめる。
 
 
-\begin{table}[H]
+\begin{table}[tbp]
     \centering
     \caption{L2スイッチの詳細}
     \includegraphics*[width=1.0\textwidth,page=7]{graphs/telework_list.pdf}
@@ -892,10 +886,10 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は接続可能とし、
     \setlength{\parskip}{0.05cm} % 段落間
     \setlength{\itemsep}{0.05cm}
     \item 小規模アプリケーション\mbox{}\\
-    上図\ref{network_graph}において、「GatewayServer」だけにインストールするもの、「Client」だけにインストールするもの
+    図\ref{network_graph}において、「GatewayServer」だけにインストールするもの、「Client」だけにインストールするもの
     と定義する。
     \item 大規模アプリケーション\mbox{}\\
-    上図\ref{network_graph}において、「GatewayServer」、「Client」、「HostServer」のそれぞれにインストール
+    図\ref{network_graph}において、「GatewayServer」、「Client」、「HostServer」のそれぞれにインストール
     を行い、各種設定をおこなう必要があるソフトウェアと定義する。
 
 
@@ -908,7 +902,7 @@ PC7とGateway間、PC8とGateway間のそれぞれの間は接続可能とし、
 ものを小規模のアプリケーションと分類して、評価を行う。
 まず最初に、評価表を表\ref{shoukibo} に示す。
 
-\begin{table}[H]
+\begin{table}[tbp]
     \centering
     \caption{小規模ソフトウェア比較表}
     \includegraphics*[width=1.0\textwidth,page=4]{graphs/telework_list.pdf}
@@ -941,7 +935,7 @@ Clientのみにインストールすればよいため、とても容易に使�
 隔離サーバであるPC8に直接ssh接続することができる。
 
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics[width=1.0\textwidth, page=7]{graphs/network_archtecture.pdf}
     \caption{sshuttleのVPN構築イメージ図}
@@ -1045,7 +1039,7 @@ sshportalはユーザの管理が簡単に行えるように設計されてお�
 大規模アプリケーションと分類して、評価を行う。
 まず最初に、評価表を下表\ref{daikibo}に示す。
 
-\begin{table}[H]
+\begin{table}[tbp]
     \centering
     \caption{大規模ソフトウェア比較表}
     \includegraphics*[width=1.0\textwidth,page=5]{graphs/telework_list.pdf}
@@ -1074,8 +1068,8 @@ GitHubの他にも、製作した会社のホームページにも解説が存�
     \item シングルサインオン(SSO)
 \end{itemize}
 
-基本的なアーキテクチャの概要を下図に示す。
-\begin{figure}[H]
+基本的なアーキテクチャの概要を図に示す。
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/teleport_archtecture.pdf}
     \caption{Teleportのアーキテクチャ}
@@ -1119,7 +1113,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
 
 \subsection*{Teleportの仕組み}
 \subsubsection*{Teleportの隔離サーバへ接続までの流れ}
-下図の詳細なアーキテクチャを使って説明を行う。
+図の詳細なアーキテクチャを使って説明を行う。
 
 \begin{enumerate}[1:]
     \setlength{\parskip}{0.1cm} % 段落間
@@ -1127,7 +1121,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
 
     \item クライアント接続を開始する\mbox{}\\クライアントは、CLIインターフェースやWebブラウザーを使用してプロキシ（Gateway）へSSH接続を始める。
     そのとき、クライアントは証明書を提供する。\\
-    \begin{figure}[H]
+    \begin{figure}[tbp]
         \centering
         \includegraphics*[width=0.8\textwidth,page=2]{graphs/teleport_archtecture.pdf}
         \caption{クライアント接続開始}
@@ -1139,7 +1133,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     プロキシは、送信された証明書が以前に認証サーバ（CA）によって署名されているかどうかを確認する。もし署名がされていなかった場合（初回ログイン時）
     や証明書の有効期限が切れているとき、プロキシは接続を拒否し、パスワードと二段階認証でのログインをクライアントに求める。
     二段階認証は、Google Authenticatorなどを用いて行う。HTTPS経由でプロキシに送信される。
-    \begin{figure}[H]
+    \begin{figure}[tbp]
         \centering
         \includegraphics*[width=0.8\textwidth,page=3]{graphs/teleport_archtecture.pdf}
         \caption{クライアント証明書の認証}
@@ -1148,7 +1142,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
 
     
     \item クライアントが接続要求するテレポートノードを調べる。\mbox{}\\
-    \begin{figure}[H]
+    \begin{figure}[tbp]
         \centering
         \includegraphics*[width=1.0\textwidth,page=4]{graphs/teleport_archtecture.pdf}
         \caption{ノードの検索}
@@ -1169,7 +1163,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     \item ノード証明書の認証\mbox{}\\ノードは接続要求を受信すると、認証サーバを使用してノードの証明書を検証しノードのクラスタ
     メンバーシップを検証する。ノード証明書が有効な場合、ノードは、クラスター内のノードおよびユーザーに関する情報へのアクセスを
     提供する認証サーバーAPIへのアクセスを許可される。
-    \begin{figure}[H]
+    \begin{figure}[tbp]
         \centering
         \includegraphics*[width=1.0\textwidth,page=5]{graphs/teleport_archtecture.pdf}
         \caption{ノードの認証}
@@ -1180,7 +1174,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     ユーザーのリスト（ユーザーマッピング）を提供するように要求し、クライアントが要求されたOSログインの使用を許可されている
     ことを確認する。
     
-    \begin{figure}[H]
+    \begin{figure}[tbp]
         \centering
         \includegraphics*[width=1.0\textwidth,page=6]{graphs/teleport_archtecture.pdf}
         \caption{ノードへのアクセス許可}
@@ -1189,7 +1183,7 @@ TeleportProxyは、ユーザー資格情報を認証サービスに転送し、�
     
 
     \item 最後に、クライアントはノードへのSSH接続を作成することを許可され、目的のノードへのSSH接続を行う。
-    \begin{figure}[H]
+    \begin{figure}[tbp]
         \centering
         \includegraphics*[width=1.0\textwidth,page=7]{graphs/teleport_archtecture.pdf}
         \caption{SSH接続の完了}
@@ -1280,8 +1274,8 @@ SoftEtherVPNは様々な種類のVPNの利用パターンを想定している�
 SoftEtherVPNには、「VPN Server」、「VPN Client」、「VPN Bridge」の大きく３種類の要素がある。
 リモートアクセスVPNの実現には、「VPN Server」と「VPN Client」を用いる。
 
-SoftEtherVPNを使用したリモートアクセスVPNでの、イメージ図を下図\ref{remoteaccess}に記す。
-\begin{figure}[H]
+SoftEtherVPNを使用したリモートアクセスVPNでの、イメージ図を図\ref{remoteaccess}に記す。
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/softetherVPN.pdf}
     \caption{SoftEtherVPNのリモートアクセス利用}
@@ -1310,9 +1304,9 @@ SoftEtherVPNを使用したリモートアクセスVPNでの、イメージ図�
 \subsection*{SoftEtherVPNのインストールとリモートアクセスVPNの構築}
 SoftEtherVPNには、「VPN Client」、「VPN Server」のそれぞれ別々の種類のソフトウェアが用意されている。そのため、
 それぞれに対するインストール方法と設定をここに記す。
-本研究でのネットワーク構成に合わせたリモートアクセス型VPNの図を下図\ref{softether}に表す。
+本研究でのネットワーク構成に合わせたリモートアクセス型VPNの図を図\ref{softether}に表す。
 
-\begin{figure}[H]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=0.9\textwidth,page=2]{graphs/softetherVPN.pdf}
     \caption{リモートアクセスVPN}
@@ -1320,7 +1314,7 @@ SoftEtherVPNには、「VPN Client」、「VPN Server」のそれぞれ別々の
 \end{figure}
 \subsubsection*{SoftEther VPN ServerのDHCP設定}
 ここでは、リモートアクセス型のSoftEtherVPNの利用にはDHCPサーバが必須であるため、
-上図\ref{softether}のVPNServer (Centos)をDHCPを行えるよう設定する。あらかじめ"SELinux"は無効化している。\par
+図\ref{softether}のVPNServer (Centos)をDHCPを行えるよう設定する。あらかじめ"SELinux"は無効化している。\par
 まず、\$ sudo yum -y install dhcp でDHCPをインストールする。その後以下のようにDHCPサーバ設定ファイル(/etc/dhcp/dhcpd.conf)を作成した。
 ここでは、10.1.1.0/24でIPアドレスを自動で割り当ててくれるように記述した。
 \begin{lstlisting}
@@ -1395,7 +1389,7 @@ systemctlコマンドでサービスの開始と有効化を行う。
 設定はコマンドラインツール「vpncmd」を使って設定した。ネットワークが繋がっていれば、vpncmdを使ってリモート設定も行える。
 
 
-\begin{figure}[H]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/serverlogin.png}
     \caption{vpncmd起動画面(Server)}
@@ -1407,7 +1401,7 @@ vpncmd起動後は、Helpを参照しながら必要に応じて拡張機能の�
 \begin{description}
     \setlength{\parskip}{0.0cm} % 段落間
     \setlength{\itemsep}{0.0cm} 
-    \item[VPN Server\textgreater] ServerPasswordSet \\ (管理者パスワード設定)
+    \item[VPN Server\textgreater] ServerPasswordSet\\(管理者パスワード設定)
     \item[VPN Server\textgreater] BridgeCreate \\(ローカルブリッジ接続を作成する)
     \item[VPN Server\textgreater] IPsecEnable \\(L2TP/IPSecサーバーを有効化する)
 
@@ -1443,7 +1437,7 @@ SoftEther VPN clientの起動は、centosの場合はVPN serverとほぼ同じ�
 次に、VPN Clientの設定を記す。VPN Serverと同じように「vpncmd」を使ってコマンドラインで設定を行なった。
 
 
-\begin{figure}[H]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/clientconfig3.png}
     \caption{vpncmd起動画面(Client)}
@@ -1466,7 +1460,7 @@ VPNClintでは、始めに利用する仮想LANカードを作成する必要が
 
 \end{description}
 \fi
-\begin{figure}[H]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=0.8\textwidth,page=1]{graphs/accountcreate.png}
     \caption{接続設定作成画面}
@@ -1490,7 +1484,7 @@ VPN Serverでの設定でパスワード認証を設定したため、VPN Client
     \item[\$] sudo ipconfig set tap0 dhcp \\(ここからvpncmdを抜けて、コマンドラインで行う。このtap0とは接続設定で
     使用したNICと同じMACアドレスを持つものを指定する)
     \item[\$] ifconfig tap0 \\
-    \begin{figure}[H]
+    \begin{figure}[tbp]
         \centering
         \includegraphics*[width=0.8\textwidth,page=1]{graphs/dhcpsuccess.png}
         \caption{ifconfig tap0の出力}
@@ -1504,7 +1498,7 @@ VPN Serverでの設定でパスワード認証を設定したため、VPN Client
 TLSにはOpenSSLを使用して、通信内容の暗号化にchacah20という共通鍵暗号とPoly1305というメッセージ認証方式を使用している
 ことがわかる。
 
-\begin{figure}[H]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=1.0\textwidth,page=1]{graphs/accountstatusget.png}
     \caption{接続状況の出力画面}
@@ -1529,15 +1523,16 @@ Active Directory 認証
 
 
 \subsection*{SoftEther VPNの評価}
-SoftEtherVPNは、GatewayServer、利用するClient、のそれぞれに対応したソフトウェア（VPNServer、VPNClient、VPNBridge）をインストールし設定を行う必要がある。
+SoftEtherVPNは、GatewayServer、利用するClient、のそれぞれに対応したソフトウェア（Gateway=VPNServer、Client=VPNClient、VPNBridge）
+をインストールし設定を行う必要がある。
 しかし、Githubにだけでなく専用のサイトが存在しそこにOSごとの詳細な説明が記載されているともに、日本発祥のソフトウェアであることにより
 "Qiita"などにも多くの情報が存在するため、とても容易にインストールと設定を行うことができた。
 今回は、認証方式をパスワード認証にしたが、その他にもRADIUS認証やサーバ証明書認証なども行える。また、今回
-利用した"リモートアクセス型"だけでなく、その他十種類以上の利用形態が想定されており、
+利用した"リモートアクセス型"だけでなく、その他10種類以上の利用形態が想定されており、
 とても安全性、柔軟性、拡張性に富んだソフトウェアといえる。
 
 デメリットとしては、SoftEtherVPNServerをインストールするサーバがDHCPサーバであることが必須であることだ。
-これにより個人的に利用する場合はGatewayServerを各自DHCPサーバ化する必要がある。サーバ等の知識が必要がなってくる。
+これにより個人的に利用する場合はGatewayServerを各自DHCPを導入する必要がある。サーバ等の知識が必要になってくる。
 
 
 
@@ -1553,29 +1548,29 @@ SoftEtherVPNは、GatewayServer、利用するClient、のそれぞれに対応�
     \setlength{\parskip}{0.1cm} % 段落間
     \setlength{\itemsep}{0.1cm} 
     \item 接続段数を減らしたい。
-    \item 接続の際のトンネルの管理の容易にしたい。%トンネリング
+    \item 接続の際のトンネルの管理を容易にしたい。%トンネリング
     \item ログイン時に入力の手間を省きたい。%証明書
-    \item ユーザ情報の一括管理が行える。%LDAP,Kerberos
-    \item 初期登録時、一括管理に加えて登録の自動化を行える。
-    \item GUIが利用できる。
-    \item 接続ログやセッションログが取れたら良い
-    \item 利用端末と遠隔アクセス端末側(E2E)のみアカウントがあれば利用できる。%VPN
+    \item ユーザ情報の一括管理を行たい。%LDAP,Kerberos
+    \item 初期登録時、一括管理に加えて登録の自動化を行えるようにしたい。
+    \item GUIが利用したい。
+    \item 接続ログやセッションログが取りたい。
+    \item 利用端末と遠隔アクセス端末側(E2E)のみアカウントがあれば利用したい。%VPN
 \end{enumerate}
 
-\begin{table}[h]
+\begin{table}[tbp]
     \caption{求める機能と技術とソフトウェア}
     \centering
     \includegraphics*[width=0.9\textwidth,page=8]{graphs/telework_list.pdf}
     \label{spec_and_technic}
 \end{table}
-\begin{table}[h]
+\begin{table}[tbp]
     \caption{求める機能とソフトウェアの対応表}
     \centering
     \includegraphics*[width=0.9\textwidth,page=9]{graphs/telework_list.pdf}
     \label{software}
 \end{table}
 
-\begin{figure}[h]
+\begin{figure}[tbp]
     \centering
     \includegraphics*[width=0.9\textwidth,page=20]{graphs/network_archtecture.pdf}
     \caption{VPNイメージ}
@@ -1719,7 +1714,8 @@ LAN接続のためのアカウント情報が一括管理されていない場�
 
 \subsubsection*{エンドツーエンド（E2E）のみのアカウント情報の利用できる}
 外部から隔離ネットワーク内のサーバにアクセスする際に、経由する全てのサーバのアカウント情報知る必要があるのは大変
-煩わしいことである。遠隔アクセス利用端末と接続先端末の、エンドツーエンドに関する情報だけ知ればよくなれば大変便利である。
+煩わしいことである。遠隔アクセス利用端末と接続先端末(エンドツーエンド)に関する情報を知っているだけで接続できると
+大変便利である。
 このような場面で必要となる技術は、「SSHの段数を減らす」際に用いられた、「VPN」技術である。
 VPNを用いることで、利用端末と接続先端末間で仮想ネットワークを構築するため、遠隔アクセスには
 ２つのアカウント情報のみで十分となる。
@@ -1744,9 +1740,9 @@ GatewayServerを中継している、接続ログが取れたら良い。
 
 \chapter{おわりに}
 本論文では前章にかけて、遠隔アクセスのために使われる技術とそのセキュリティ性向上のために使われている技術を解説した後、
-それらの技術を用いているいくつかのオープンソースソフトウェアを試用し、通信制御に関する考察を行った。
+それらの技術を用いるいくつかのオープンソースソフトウェアを試用し、通信制御に関する考察を行った。
 本章では全体のまとめを行う。\par
-本研究では、ソフトウェアを試用するために3台のサーバと1台のL2スイッチで隔離ネットワークを構成しなければならなかった。
+本研究では、ソフトウェアを試用するために3台のサーバと1台のL2スイッチで隔離ネットワークを構成した。
 サーバにはそれぞれにOSを入れ、スイッチには適した設定を自分で行い、ソフトウェアを１つ１つインストールしていき、性能を
 調査した。
 インストールするソフトウェアは「Github」から、できるだけお気に入りやフォークが多いものを選んだ。
@@ -1762,9 +1758,9 @@ Githubで通信制御のためのソフトウェアを検索する中で気に�
 \fi
 
 前章の考察において羅列した、求める機能を最も多く満たしていたソフトウェアは「Teleport」と「SoftEtherVPN」であった。
-これら２つは大規模ソフトウェアという、Gatewayやクライアントそれぞれに適した設定を行う必要があり、導入難易度が
-比較的高いものであったため、それ相応の
-高い性能をもっていたと思われる。\par
+これら２つは大規模ソフトウェアという、Gatewayやクライアントそれぞれに適した設定を行う必要があるものであり、
+それぞれが役割別に作用するように設計されているため、高い性能が発揮できたと思われる。
+
 いくつかソフトウェアを試用する中で個人的にとても便利だと感じたのは、「sshuttle」と「SoftEtherVPN」である。
 「sshuttle」は、簡易的なVPNを生成できるツールであるが、
 利用するには遠隔アクセスを行う端末側のみにインストールすればよく、Gatewayにsshuttle用の設定を行う必要が
@@ -1775,18 +1771,6 @@ Githubで通信制御のためのソフトウェアを検索する中で気に�
 今回の使用方法の他にもさまざまな使用モデルが想定されており、海外から日本国内の自宅のネットワークを利用できるように
 するなど、大変興味深い使用方法が記載されており、将来的に使いこなせるようになりたいと感じた。
 
-
-
-
-
-
-
-%大規模ソフトウェアには、クライアント、Gateway、隔離サーバの3種別の設定を行う必要があったため、それにはとても苦労した。
-%「Ansible」や「Vagrant」を自分が使いこなすことができたならば、とても楽に設定を行えるソフトウェアがいくつかあった。
-
-
-
-%を使って自分で隔離ネットワーク
 
 
 \bibliography{link_subtheme,rfc.bib}
